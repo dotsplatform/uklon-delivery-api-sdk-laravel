@@ -115,6 +115,7 @@
       <data directive="@viteReactRefresh" />
       <data directive="@vitereactrefresh" />
       <data directive="@while" injection="true" prefix="&lt;?php&#10;while(" suffix="): ?&gt;" />
+      <data directive="@xray" />
       <data directive="@yield" injection="true" prefix="&lt;?php&#10;echo $__env-&gt;yieldContent(" suffix="); ?&gt;" />
     </directives>
   </component>

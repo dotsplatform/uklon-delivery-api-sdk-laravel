@@ -1,6 +1,6 @@
 providers:
   # - Workbench\App\Providers\WorkbenchServiceProvider
-  - Dots\Uklon\GlovoLaasServiceProvider
+  - Dots\Uklon\UklonDeliveryServiceProvider
 
 migrations:
   - workbench/database/migrations

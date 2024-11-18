@@ -28,7 +28,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../../../config/uklon.php' => config_path('uklon.php'),
+            __DIR__.'/../../config/uklon.php' => config_path('uklon.php'),
         ]);
         if ($this->app->runningInConsole()) {
             $this->registerArtisanCommands();
@@ -47,7 +47,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../../../config/uklon.php',
+            __DIR__.'/../../config/uklon.php',
             'uklon',
         );
     }

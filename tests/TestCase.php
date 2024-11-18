@@ -7,7 +7,7 @@
 
 namespace Tests;
 
-use Dots\Uklon\GlovoLaasServiceProvider;
+use Dots\Uklon\UklonDeliveryServiceProvider;
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as LaravelTestCase;
 
@@ -16,7 +16,7 @@ abstract class TestCase extends LaravelTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            GlovoLaasServiceProvider::class,
+            UklonDeliveryServiceProvider::class,
         ];
     }
 
