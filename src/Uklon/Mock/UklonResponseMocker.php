@@ -14,19 +14,19 @@ use Dots\Uklon\Client\Requests\Orders\GetOrderCourierContactRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\ValidateOrderRequest;
 use Dots\Uklon\Client\Resources\Consts\ValidationResult;
-use Dots\Uklon\Mock\Data\GlovoOAuthResponseGenerator;
+use Dots\Uklon\Mock\Data\UklonOAuthResponseGenerator;
 use Dots\Uklon\Mock\Data\OrderCourierResponseGenerator;
 use Dots\Uklon\Mock\Data\OrderInfoSuccessResponseGenerator;
 use Dots\Uklon\Mock\Data\ValidateOrderResponseGenerator;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
 
-class GlovoResponseMocker
+class UklonResponseMocker
 {
     public static function mockSuccessCreateOrder(array $data = []): array
     {
         $orderData = OrderInfoSuccessResponseGenerator::generate($data);
-        $authData = GlovoOAuthResponseGenerator::generate();
+        $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
             CreateOrderRequest::class => MockResponse::make($orderData),
@@ -38,7 +38,7 @@ class GlovoResponseMocker
     public static function mockSuccessValidateOrder(?ValidationResult $result = null): array
     {
         $data = ValidateOrderResponseGenerator::generateSuccess($result);
-        $authData = GlovoOAuthResponseGenerator::generate();
+        $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
             ValidateOrderRequest::class => MockResponse::make($data),
@@ -50,7 +50,7 @@ class GlovoResponseMocker
     public static function mockSuccessGetOrder(array $data = []): array
     {
         $orderData = OrderInfoSuccessResponseGenerator::generate($data);
-        $authData = GlovoOAuthResponseGenerator::generate();
+        $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
             GetOrderRequest::class => MockResponse::make($orderData),
@@ -62,7 +62,7 @@ class GlovoResponseMocker
     public static function mockSuccessGetOrderCourierContact(): array
     {
         $courierData = OrderCourierResponseGenerator::generate();
-        $authData = GlovoOAuthResponseGenerator::generate();
+        $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
             GetOrderCourierContactRequest::class => MockResponse::make($courierData),
@@ -73,7 +73,7 @@ class GlovoResponseMocker
 
     public static function mockSuccessCancelOrder(): void
     {
-        $authData = GlovoOAuthResponseGenerator::generate();
+        $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
             CancelOrderRequest::class => MockResponse::make(),
@@ -82,7 +82,7 @@ class GlovoResponseMocker
 
     public static function mockGeAccessToken(array $data = []): array
     {
-        $responseData = GlovoOAuthResponseGenerator::generate($data);
+        $responseData = UklonOAuthResponseGenerator::generate($data);
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($responseData),
         ]);

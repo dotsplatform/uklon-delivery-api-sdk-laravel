@@ -11,7 +11,7 @@ use Dots\Uklon\Client\Resources\Webhook\WebhooksList;
 use InvalidArgumentException;
 use Saloon\Http\Response;
 
-class WebhooksListResponseDTO extends GlovoResponseDTO
+class WebhooksListResponseDTO extends UklonResponseDTO
 {
     protected WebhooksList $webhookList;
 

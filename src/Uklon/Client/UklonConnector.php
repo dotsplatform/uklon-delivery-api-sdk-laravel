@@ -27,7 +27,7 @@ use Dots\Uklon\Client\Requests\Webhooks\GetWebhooksListRequest;
 use Dots\Uklon\Client\Requests\Webhooks\RegisterWebhookRequest;
 use Dots\Uklon\Client\Requests\Webhooks\Simulate\SimulateWebhookRequest;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
-use Dots\Uklon\Client\Responses\GlovoOAuthResponse;
+use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use Dots\Uklon\Client\Responses\OrderCourierContactResponseDTO;
 use Dots\Uklon\Client\Responses\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\OrderResponseDTO;
@@ -198,7 +198,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getAccessToken(): GlovoOAuthResponse
+    public function getAccessToken(): UklonOAuthResponse
     {
         return $this->send(new AuthenticateRequest(
             $this->authDto,

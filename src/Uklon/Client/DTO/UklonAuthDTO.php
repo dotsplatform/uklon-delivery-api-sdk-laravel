@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of GlovoAuthDTO.php
+ * Description of UklonAuthDTO.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */

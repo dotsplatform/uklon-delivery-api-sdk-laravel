@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Responses;
 
 use Dots\Uklon\Client\Resources\Consts\ValidationResult;
 
-class ValidateOrderResponseDTO extends GlovoResponseDTO
+class ValidateOrderResponseDTO extends UklonResponseDTO
 {
     protected ValidationResult $validationResult;
 

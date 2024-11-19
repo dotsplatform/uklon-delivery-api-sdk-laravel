@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Responses;
 
 use Dots\Uklon\Client\Resources\Consts\ErrorCodes;
 
-class ErrorResponseDTO extends GlovoResponseDTO
+class ErrorResponseDTO extends UklonResponseDTO
 {
     protected ErrorCodes $code;
 

@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Client\Responses;
 
-class OrderCourierContactResponseDTO extends GlovoResponseDTO
+class OrderCourierContactResponseDTO extends UklonResponseDTO
 {
     protected string $courierName;
 

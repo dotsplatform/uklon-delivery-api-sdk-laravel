@@ -8,7 +8,7 @@
 namespace Dots\Uklon\Client\Requests;
 
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
-use Dots\Uklon\Client\Responses\GlovoOAuthResponse;
+use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use Saloon\Http\Response;
 
 class AuthenticateRequest extends PostUklonRequest
@@ -22,9 +22,9 @@ class AuthenticateRequest extends PostUklonRequest
     ) {
     }
 
-    public function createDtoFromResponse(Response $response): GlovoOAuthResponse
+    public function createDtoFromResponse(Response $response): UklonOAuthResponse
     {
-        return GlovoOAuthResponse::fromResponse($response);
+        return UklonOAuthResponse::fromResponse($response);
     }
 
     public function defaultBody(): array

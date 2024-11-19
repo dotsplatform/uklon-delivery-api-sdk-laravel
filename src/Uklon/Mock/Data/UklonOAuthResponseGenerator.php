@@ -1,13 +1,13 @@
 <?php
 /**
- * Description of GlovoOAuthResponseGenerator.php
+ * Description of UklonOAuthResponseGenerator.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Mock\Data;
 
-class GlovoOAuthResponseGenerator
+class UklonOAuthResponseGenerator
 {
     public static function generate(array $data = []): array
     {

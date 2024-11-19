@@ -16,7 +16,7 @@ use Dots\Uklon\Client\Resources\Order\PackageDetails;
 use Dots\Uklon\Client\Resources\Order\PickupDetails;
 use Dots\Uklon\Client\Resources\Order\StateChangeHistoryList;
 
-class OrderResponseDTO extends GlovoResponseDTO
+class OrderResponseDTO extends UklonResponseDTO
 {
     protected string $trackingNumber;
 

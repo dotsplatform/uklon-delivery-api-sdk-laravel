@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Responses;
 
 use Saloon\Http\Response;
 
-class GlovoOAuthResponse extends GlovoResponseDTO
+class UklonOAuthResponse extends UklonResponseDTO
 {
     protected string $accessToken;
 

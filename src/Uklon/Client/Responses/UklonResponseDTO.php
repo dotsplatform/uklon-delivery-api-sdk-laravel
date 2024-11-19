@@ -10,7 +10,7 @@ namespace Dots\Uklon\Client\Responses;
 use Dots\Data\DTO;
 use Saloon\Http\Response;
 
-abstract class GlovoResponseDTO extends DTO
+abstract class UklonResponseDTO extends DTO
 {
     public static function fromResponse(Response $response): static
     {

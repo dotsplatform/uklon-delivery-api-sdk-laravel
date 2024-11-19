@@ -6,7 +6,7 @@ return [
     'max_retries' => 3,
 
     'auth' => [
-        'clientId' => env('GLOVO_CLIENT_ID'),
-        'clientSecret' => env('GLOVO_CLIENT_SECRET'),
+        'clientId' => env('UKLON_CLIENT_ID'),
+        'clientSecret' => env('UKLON_CLIENT_SECRET'),
     ],
 ];

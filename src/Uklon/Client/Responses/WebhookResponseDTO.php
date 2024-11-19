@@ -10,7 +10,7 @@ namespace Dots\Uklon\Client\Responses;
 use Dots\Uklon\Client\Resources\Webhook\WebhookDTO;
 use Saloon\Http\Response;
 
-class WebhookResponseDTO extends GlovoResponseDTO
+class WebhookResponseDTO extends UklonResponseDTO
 {
     protected WebhookDTO $webhook;
 

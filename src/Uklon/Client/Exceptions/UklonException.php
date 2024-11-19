@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of CreateGlovoOrderException.php
+ * Description of CreateUklonOrderException.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
  */

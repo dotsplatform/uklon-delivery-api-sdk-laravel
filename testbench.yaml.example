@@ -6,8 +6,8 @@ migrations:
   - workbench/database/migrations
 
 env:
-  - GLOVO_CLIENT_ID=
-  - GLOVO_CLIENT_SECRET=
+  - UKLON_CLIENT_ID=
+  - UKLON_CLIENT_SECRET=
 
 seeders:
   - Workbench\Database\Seeders\DatabaseSeeder

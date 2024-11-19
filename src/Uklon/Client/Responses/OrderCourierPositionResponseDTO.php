@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Client\Responses;
 
-class OrderCourierPositionResponseDTO extends GlovoResponseDTO
+class OrderCourierPositionResponseDTO extends UklonResponseDTO
 {
     protected float $latitude;
 
