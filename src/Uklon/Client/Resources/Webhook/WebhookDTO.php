@@ -8,7 +8,6 @@
 namespace Dots\Uklon\Client\Resources\Webhook;
 
 use Dots\Data\DTO;
-use Dots\Uklon\Client\Resources\Consts\WebhookEventType;
 
 class WebhookDTO extends DTO
 {
@@ -16,17 +15,11 @@ class WebhookDTO extends DTO
 
     protected string $callbackUrl;
 
-    protected WebhookEventType $eventSubscribed;
-
     protected ?RetryConfig $retryConfig;
 
     public static function fromArray(array $data): static
     {
         $data['retryConfig'] = isset($data['retryConfig']) ? RetryConfig::fromArray($data['retryConfig']) : null;
-        $data['eventSubscribed'] = $data['eventSubscribed'] ?? WebhookEventType::STATUS_UPDATE;
-        if (is_string($data['eventSubscribed'])) {
-            $data['eventSubscribed'] = WebhookEventType::from($data['eventSubscribed']);
-        }
 
         return parent::fromArray($data);
     }
@@ -39,11 +32,6 @@ class WebhookDTO extends DTO
     public function getCallbackUrl(): string
     {
         return $this->callbackUrl;
-    }
-
-    public function getEventSubscribed(): WebhookEventType
-    {
-        return $this->eventSubscribed;
     }
 
     public function getRetryConfig(): ?RetryConfig

@@ -8,14 +8,11 @@
 namespace Dots\Uklon\Client\Requests\Webhooks\DTO;
 
 use Dots\Data\DTO;
-use Dots\Uklon\Client\Resources\Consts\WebhookEventType;
 use Dots\Uklon\Client\Resources\Webhook\RetryConfig;
 
 class RegisterWebhookDTO extends DTO
 {
     protected string $callbackUrl;
-
-    protected WebhookEventType $eventType;
 
     /**
      * Secret shared by the partner to be sent as authorization header on the callback URL.
@@ -28,10 +25,6 @@ class RegisterWebhookDTO extends DTO
     public static function fromArray(array $data): static
     {
         $data['retryConfig'] = isset($data['retryConfig']) ? RetryConfig::fromArray($data['retryConfig']) : null;
-        $data['eventType'] = $data['eventType'] ?? WebhookEventType::STATUS_UPDATE;
-        if (is_string($data['eventType'])) {
-            $data['eventType'] = WebhookEventType::from($data['eventType']);
-        }
 
         return parent::fromArray($data);
     }
@@ -39,11 +32,6 @@ class RegisterWebhookDTO extends DTO
     public function getCallbackUrl(): string
     {
         return $this->callbackUrl;
-    }
-
-    public function getEventType(): WebhookEventType
-    {
-        return $this->eventType;
     }
 
     public function getPartnerSecret(): ?string
