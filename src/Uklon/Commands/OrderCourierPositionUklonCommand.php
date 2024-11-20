@@ -14,8 +14,8 @@ class OrderCourierPositionUklonCommand extends BaseUklonCommand
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $trackingNumber = $this->assertStringValue($this->argument('orderId'));
-        $order = $connector->getOrderCourierPosition($trackingNumber);
+        $orderId = $this->assertStringValue($this->argument('orderId'));
+        $order = $connector->getOrderCourierPosition($orderId);
         dd($order);
     }
 }

@@ -14,11 +14,10 @@ use Dots\Uklon\Commands\OrderCancelUklonCommand;
 use Dots\Uklon\Commands\OrderCourierPositionUklonCommand;
 use Dots\Uklon\Commands\OrderCreateUklonCommand;
 use Dots\Uklon\Commands\OrderInfoUklonCommand;
-use Dots\Uklon\Commands\OrderSimulateFailDeliveryUklonCommand;
-use Dots\Uklon\Commands\OrderSimulateSuccessfulDeliveryUklonCommand;
-use Dots\Uklon\Commands\WebhooksDeleteUklonCommand;
-use Dots\Uklon\Commands\WebhooksRegisterUklonCommand;
-use Dots\Uklon\Commands\WebhooksSimulateUklonCommand;
+use Dots\Uklon\Commands\WebhookDeleteForDriverUklonCommand;
+use Dots\Uklon\Commands\WebhookDeleteForOrderUklonCommand;
+use Dots\Uklon\Commands\WebhooksCreateForDriverUklonCommand;
+use Dots\Uklon\Commands\WebhooksCreateForOrderUklonCommand;
 use Illuminate\Support\ServiceProvider;
 
 class UklonDeliveryServiceProvider extends ServiceProvider
@@ -59,11 +58,10 @@ class UklonDeliveryServiceProvider extends ServiceProvider
             OrderCourierPositionUklonCommand::class,
             OrderCreateUklonCommand::class,
             OrderInfoUklonCommand::class,
-            OrderSimulateSuccessfulDeliveryUklonCommand::class,
-            OrderSimulateFailDeliveryUklonCommand::class,
-            WebhooksDeleteUklonCommand::class,
-            WebhooksRegisterUklonCommand::class,
-            WebhooksSimulateUklonCommand::class,
+            WebhookDeleteForOrderUklonCommand::class,
+            WebhookDeleteForDriverUklonCommand::class,
+            WebhooksCreateForOrderUklonCommand::class,
+            WebhooksCreateForDriverUklonCommand::class,
         ]);
     }
 }

@@ -17,11 +17,11 @@ use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierPositionRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
-use Dots\Uklon\Client\Requests\Orders\Simulate\SimulateFailedDeliveryRequest;
-use Dots\Uklon\Client\Requests\Orders\Simulate\SimulateSuccessfulDeliveryRequest;
-use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookRequest;
-use Dots\Uklon\Client\Requests\Webhooks\DTO\RegisterWebhookDTO;
-use Dots\Uklon\Client\Requests\Webhooks\RegisterWebhookRequest;
+use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForDriverRequest;
+use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForDriverRequest;
+use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForOrderRequest;
+use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
+use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\Simulate\SimulateWebhookRequest;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
@@ -80,76 +80,65 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getOrder(string $trackingNumber): OrderResponseDTO
+    public function getOrder(string $orderId): OrderResponseDTO
     {
         $this->authenticateRequests();
 
-        return $this->send(new GetOrderRequest($trackingNumber))->dto();
+        return $this->send(new GetOrderRequest($orderId))->dto();
     }
 
-    public function getOrderCourierPosition(string $trackingNumber): OrderCourierPositionResponseDTO
+    public function getOrderCourierPosition(string $orderId): OrderCourierPositionResponseDTO
     {
         $this->authenticateRequests();
 
-        return $this->send(new GetOrderCourierPositionRequest($trackingNumber))->dto();
-    }
-
-    /**
-     * @throws UklonException
-     */
-    public function cancelOrder(string $trackingNumber): void
-    {
-        $this->authenticateRequests();
-        $this->send(new CancelOrderRequest($trackingNumber));
+        return $this->send(new GetOrderCourierPositionRequest($orderId))->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function simulateSuccessfulDelivery(string $trackingNumber): void
+    public function cancelOrder(string $orderId): void
     {
-        $this->assertIsStagingEnv();
         $this->authenticateRequests();
-        $this->send(new SimulateSuccessfulDeliveryRequest($trackingNumber));
+        $this->send(new CancelOrderRequest($orderId));
     }
 
     /**
      * @throws UklonException
      */
-    public function simulateFailedDelivery(string $trackingNumber): void
+    public function createWebhookForOrder(CreateWebhookDTO $dto): WebhookResponseDTO
     {
-        $this->assertIsStagingEnv();
         $this->authenticateRequests();
-        $this->send(new SimulateFailedDeliveryRequest($trackingNumber));
+
+        return $this->send(new CreateWebhookForOrderRequest($dto))->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function registerWebhook(RegisterWebhookDTO $dto): WebhookResponseDTO
+    public function createWebhookForDriver(CreateWebhookDTO $dto): WebhookResponseDTO
     {
         $this->authenticateRequests();
 
-        return $this->send(new RegisterWebhookRequest($dto))->dto();
+        return $this->send(new CreateWebhookForDriverRequest($dto))->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function deleteWebhook(int $webhookId): void
+    public function deleteWebhookForOrder(): void
     {
         $this->authenticateRequests();
-        $this->send(new DeleteWebhookRequest($webhookId))->dto();
+        $this->send(new DeleteWebhookForOrderRequest())->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function simulateWebhook(int $webhookId): void
+    public function deleteWebhookForDriver(): void
     {
-        $this->assertIsStagingEnv();
         $this->authenticateRequests();
-        $this->send(new SimulateWebhookRequest($webhookId))->dto();
+        $this->send(new DeleteWebhookForDriverRequest())->dto();
     }
 
     private function authenticateRequests(): void

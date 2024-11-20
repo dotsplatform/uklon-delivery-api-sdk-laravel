@@ -16,9 +16,9 @@ class OrderCancelUklonCommand extends BaseUklonCommand
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $trackingNumber = $this->assertStringValue($this->argument('orderId'));
+        $orderId = $this->assertStringValue($this->argument('orderId'));
         try {
-            $connector->cancelOrder($trackingNumber);
+            $connector->cancelOrder($orderId);
         } catch (UklonException $e) {
             $this->error($e->getMessage());
         }

@@ -8,7 +8,7 @@
 namespace Dots\Uklon\Client\Requests\Webhooks;
 
 use Dots\Uklon\Client\Requests\PostUklonRequest;
-use Dots\Uklon\Client\Requests\Webhooks\DTO\RegisterWebhookDTO;
+use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use Saloon\Http\Response;
 
@@ -20,12 +20,12 @@ use Saloon\Http\Response;
  *
  * The webhook will be called for all the active orders created by the partner.
  */
-class RegisterWebhookRequest extends PostUklonRequest
+class CreateWebhookForOrderRequest extends PostUklonRequest
 {
-    private const ENDPOINT = '/v2/laas/webhooks';
+    private const string ENDPOINT = '/api/v1/webhooks/order';
 
     public function __construct(
-        private readonly RegisterWebhookDTO $dto,
+        private readonly CreateWebhookDTO $dto,
     ) {
     }
 

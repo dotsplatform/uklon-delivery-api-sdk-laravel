@@ -20,13 +20,13 @@ class GetOrderRequest extends BaseUklonRequest
     private const string ENDPOINT_TEMPLATE = '/api/v1/orders/%s';
 
     public function __construct(
-        protected readonly string $trackingNumber,
+        protected readonly string $orderId,
     ) {
     }
 
     public function resolveEndpoint(): string
     {
-        return sprintf(self::ENDPOINT_TEMPLATE, $this->trackingNumber);
+        return sprintf(self::ENDPOINT_TEMPLATE, $this->orderId);
     }
 
     public function createDtoFromResponse(Response $response): OrderResponseDTO

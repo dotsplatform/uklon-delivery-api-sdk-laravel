@@ -7,19 +7,17 @@
 
 namespace Dots\Uklon\Commands;
 
-use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Saloon\Exceptions\SaloonException;
 
-class WebhooksSimulateUklonCommand extends BaseUklonCommand
+class WebhookDeleteForDriverUklonCommand extends BaseUklonCommand
 {
-    public $signature = 'uklon:webhooks:simulate {webhookId}';
+    public $signature = 'uklon:webhooks:delete:driver';
 
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
         try {
-            $webhookId = $this->assertIntValue($this->argument('webhookId'));
-            $connector->simulateWebhook($webhookId);
+            $connector->deleteWebhookForDriver();
         } catch (SaloonException $e) {
             $this->error($e->getMessage());
         }

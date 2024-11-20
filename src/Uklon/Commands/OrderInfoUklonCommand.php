@@ -14,8 +14,8 @@ class OrderInfoUklonCommand extends BaseUklonCommand
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $trackingNumber = $this->assertStringValue($this->argument('orderId'));
-        $order = $connector->getOrder($trackingNumber);
+        $orderId = $this->assertStringValue($this->argument('orderId'));
+        $order = $connector->getOrder($orderId);
         dd($order);
     }
 }
