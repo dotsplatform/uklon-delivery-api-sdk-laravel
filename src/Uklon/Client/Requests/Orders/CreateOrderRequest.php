@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Requests\Orders;
 
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
 use Dots\Uklon\Client\Requests\PostUklonRequest;
-use Dots\Uklon\Client\Responses\OrderResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
 use Saloon\Http\Response;
 
 /**
@@ -32,7 +32,7 @@ use Saloon\Http\Response;
  */
 class CreateOrderRequest extends PostUklonRequest
 {
-    private const ENDPOINT = '/v2/laas/parcels';
+    private const string ENDPOINT = '/api/v1/orders';
 
     public function __construct(
         protected readonly CreateOrderDTO $dto,

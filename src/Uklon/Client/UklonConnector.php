@@ -10,33 +10,29 @@ namespace Dots\Uklon\Client;
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
 use Dots\Uklon\Client\Exceptions\UklonException;
 use Dots\Uklon\Client\Requests\AuthenticateRequest;
+use Dots\Uklon\Client\Requests\Fares\CreateFareRequest;
+use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
 use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
-use Dots\Uklon\Client\Requests\Orders\DTO\ValidateOrderDTO;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierContactRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierPositionRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\Simulate\SimulateFailedDeliveryRequest;
 use Dots\Uklon\Client\Requests\Orders\Simulate\SimulateSuccessfulDeliveryRequest;
-use Dots\Uklon\Client\Requests\Orders\ValidateOrderRequest;
-use Dots\Uklon\Client\Requests\Orders\WorkingAreaRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\RegisterWebhookDTO;
 use Dots\Uklon\Client\Requests\Webhooks\GetWebhooksListRequest;
 use Dots\Uklon\Client\Requests\Webhooks\RegisterWebhookRequest;
 use Dots\Uklon\Client\Requests\Webhooks\Simulate\SimulateWebhookRequest;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderCourierContactResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
-use Dots\Uklon\Client\Responses\OrderCourierContactResponseDTO;
-use Dots\Uklon\Client\Responses\OrderCourierPositionResponseDTO;
-use Dots\Uklon\Client\Responses\OrderResponseDTO;
-use Dots\Uklon\Client\Responses\ValidateOrderResponseDTO;
-use Dots\Uklon\Client\Responses\WebhookResponseDTO;
-use Dots\Uklon\Client\Responses\WebhooksListResponseDTO;
+use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
+use Dots\Uklon\Client\Responses\Webhooks\WebhooksListResponseDTO;
 use RuntimeException;
-use Saloon\Exceptions\Request\FatalRequestException;
-use Saloon\Exceptions\Request\RequestException;
 use Saloon\Http\Connector;
 use Saloon\Http\Response;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
@@ -67,21 +63,11 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function validateOrder(ValidateOrderDTO $dto): ValidateOrderResponseDTO
+    public function createFare(CreateFareDTO $dto): OrderResponseDTO
     {
         $this->authenticateRequests();
 
-        return $this->send(new ValidateOrderRequest($dto))->dto();
-    }
-
-    /**
-     * @throws UklonException
-     */
-    public function workingArea(): array
-    {
-        $this->authenticateRequests();
-
-        return $this->send(new WorkingAreaRequest())->dto();
+        return $this->send(new CreateFareRequest($dto, $this->stageEnv))->dto();
     }
 
     /**

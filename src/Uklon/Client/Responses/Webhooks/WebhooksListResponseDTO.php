@@ -5,9 +5,10 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Responses;
+namespace Dots\Uklon\Client\Responses\Webhooks;
 
 use Dots\Uklon\Client\Resources\Webhook\WebhooksList;
+use Dots\Uklon\Client\Responses\UklonResponseDTO;
 use InvalidArgumentException;
 use Saloon\Http\Response;
 

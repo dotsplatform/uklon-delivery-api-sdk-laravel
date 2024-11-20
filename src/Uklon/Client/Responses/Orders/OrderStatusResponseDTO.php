@@ -5,7 +5,7 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Responses;
+namespace Dots\Uklon\Client\Responses\Orders;
 
 use Dots\Data\DTO;
 use Dots\Uklon\Client\Resources\Consts\OrderStatusState;

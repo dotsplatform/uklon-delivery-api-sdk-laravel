@@ -5,7 +5,9 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Responses;
+namespace Dots\Uklon\Client\Responses\Orders;
+
+use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
 class OrderCourierPositionResponseDTO extends UklonResponseDTO
 {

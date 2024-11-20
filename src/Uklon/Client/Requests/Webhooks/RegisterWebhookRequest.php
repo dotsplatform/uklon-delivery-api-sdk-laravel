@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Requests\Webhooks;
 
 use Dots\Uklon\Client\Requests\PostUklonRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\RegisterWebhookDTO;
-use Dots\Uklon\Client\Responses\WebhookResponseDTO;
+use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use Saloon\Http\Response;
 
 /**

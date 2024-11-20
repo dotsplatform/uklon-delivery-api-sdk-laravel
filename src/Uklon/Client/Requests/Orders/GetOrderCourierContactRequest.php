@@ -8,7 +8,7 @@
 namespace Dots\Uklon\Client\Requests\Orders;
 
 use Dots\Uklon\Client\Requests\BaseUklonRequest;
-use Dots\Uklon\Client\Responses\OrderCourierContactResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderCourierContactResponseDTO;
 use Saloon\Http\Response;
 
 /**

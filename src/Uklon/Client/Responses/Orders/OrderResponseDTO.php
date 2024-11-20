@@ -5,7 +5,7 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Responses;
+namespace Dots\Uklon\Client\Responses\Orders;
 
 use Dots\Uklon\Client\Resources\Address;
 use Dots\Uklon\Client\Resources\Contact;
@@ -15,6 +15,7 @@ use Dots\Uklon\Client\Resources\Order\OrderStatus;
 use Dots\Uklon\Client\Resources\Order\PackageDetails;
 use Dots\Uklon\Client\Resources\Order\PickupDetails;
 use Dots\Uklon\Client\Resources\Order\StateChangeHistoryList;
+use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
 class OrderResponseDTO extends UklonResponseDTO
 {

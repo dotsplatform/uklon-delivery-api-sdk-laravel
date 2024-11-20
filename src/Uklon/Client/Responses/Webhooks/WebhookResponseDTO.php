@@ -5,9 +5,10 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Responses;
+namespace Dots\Uklon\Client\Responses\Webhooks;
 
 use Dots\Uklon\Client\Resources\Webhook\WebhookDTO;
+use Dots\Uklon\Client\Responses\UklonResponseDTO;
 use Saloon\Http\Response;
 
 class WebhookResponseDTO extends UklonResponseDTO
