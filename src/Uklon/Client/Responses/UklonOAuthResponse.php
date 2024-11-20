@@ -13,19 +13,19 @@ class UklonOAuthResponse extends UklonResponseDTO
 {
     protected string $accessToken;
 
-    protected int $clientId;
+    protected ?string $clientId;
 
     protected int $expiresIn;
 
     protected ?string $expires;
 
-    protected string $issued;
+    protected ?string $issued;
 
     public static function fromResponse(Response $response): static
     {
         $data = $response->json();
         $data['accessToken'] = $data['access_token'];
-        $data['clientId'] = $data['client_id'];
+        $data['clientId'] = $data['client_id'] ?? null;
         $data['expiresIn'] = $data['expires_in'];
 
         return static::fromArray($data);
@@ -36,7 +36,7 @@ class UklonOAuthResponse extends UklonResponseDTO
         return $this->accessToken;
     }
 
-    public function getClientId(): int
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
@@ -51,7 +51,7 @@ class UklonOAuthResponse extends UklonResponseDTO
         return $this->expires;
     }
 
-    public function getIssued(): string
+    public function getIssued(): ?string
     {
         return $this->issued;
     }

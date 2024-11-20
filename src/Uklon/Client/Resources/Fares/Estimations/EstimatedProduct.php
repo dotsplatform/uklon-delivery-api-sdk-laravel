@@ -11,14 +11,18 @@ use Dots\Data\DTO;
 
 class EstimatedProduct extends DTO
 {
-    protected ProductEstimation $estimation;
+    protected ?ProductEstimation $estimation;
 
-    protected EstimationError $error;
+    protected ?EstimationError $error;
 
     public static function fromArray(array $data): static
     {
-        $data['estimation'] = ProductEstimation::fromArray($data['estimation'] ?? []);
-        $data['error'] = EstimationError::fromArray($data['error'] ?? []);
+        if (isset($data['estimation'])) {
+            $data['estimation'] = ProductEstimation::fromArray($data['estimation']);
+        }
+        if (isset($data['error'])) {
+            $data['error'] = EstimationError::fromArray($data['error']);
+        }
 
         return parent::fromArray($data);
     }

@@ -25,13 +25,13 @@ class FareCreateUklonCommand extends BaseUklonCommand
         $data = [
             'city' => 1,
             'pickup_point' => [
-                'latitude' => '31.2894746',
-                'longitude' => '51.5044742',
+                'latitude' => 51.5044742,
+                'longitude' => 31.2894746,
             ],
             'dropoff_points' => [
                 [
-                    'latitude' => '31.1732924',
-                    'longitude' => '51.4920781AuthenticateRequest',
+                    'latitude' => 51.4920781,
+                    'longitude' => 31.1732924,
                 ],
             ],
             'products' => [
