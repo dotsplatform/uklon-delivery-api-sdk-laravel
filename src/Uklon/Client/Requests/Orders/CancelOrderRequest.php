@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Client\Requests\Orders;
 
-use Dots\Uklon\Client\Requests\PostUklonRequest;
+use Dots\Uklon\Client\Requests\PutUklonRequest;
 
 /**
  * @url https://logistics-docs.glovoapp.com/laas-partners/index.html#operation/cancelParcel
@@ -19,9 +19,9 @@ use Dots\Uklon\Client\Requests\PostUklonRequest;
  * Please note that if you cancel a delivery in the ACCEPTED or WAITING_FOR_PICKUP state,
  * you will incur a cancellation fee
  */
-class CancelOrderRequest extends PostUklonRequest
+class CancelOrderRequest extends PutUklonRequest
 {
-    private const ENDPOINT_TEMPLATE = '/v2/laas/parcels/%s/cancel';
+    private const string ENDPOINT_TEMPLATE = '/api/v1/orders/%s/cancel';
 
     public function __construct(
         protected readonly string $trackingNumber,

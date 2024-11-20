@@ -19,7 +19,7 @@ use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
 class OrderResponseDTO extends UklonResponseDTO
 {
-    protected string $trackingNumber;
+    protected string $id;
 
     protected ?string $orderCode;
 
@@ -66,9 +66,9 @@ class OrderResponseDTO extends UklonResponseDTO
         return $this->getStatus()->isCourierAssignedStatus();
     }
 
-    public function getTrackingNumber(): string
+    public function getId(): string
     {
-        return $this->trackingNumber;
+        return $this->id;
     }
 
     public function getOrderCode(): ?string

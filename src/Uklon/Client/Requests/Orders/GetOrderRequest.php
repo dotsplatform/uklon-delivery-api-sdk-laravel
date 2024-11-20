@@ -17,7 +17,7 @@ use Saloon\Http\Response;
  */
 class GetOrderRequest extends BaseUklonRequest
 {
-    private const ENDPOINT_TEMPLATE = '/v2/laas/parcels/%s';
+    private const string ENDPOINT_TEMPLATE = '/api/v1/orders/%s';
 
     public function __construct(
         protected readonly string $trackingNumber,

@@ -31,7 +31,6 @@ use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
-use Dots\Uklon\Client\Responses\Webhooks\WebhooksListResponseDTO;
 use RuntimeException;
 use Saloon\Http\Connector;
 use Saloon\Http\Response;
@@ -67,7 +66,7 @@ class UklonConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateFareRequest($dto, $this->stageEnv))->dto();
+        return $this->send(new CreateFareRequest($dto))->dto();
     }
 
     /**
@@ -88,16 +87,6 @@ class UklonConnector extends Connector
         $this->authenticateRequests();
 
         return $this->send(new GetOrderRequest($trackingNumber))->dto();
-    }
-
-    /**
-     * @throws UklonException
-     */
-    public function getOrderCourierContact(string $trackingNumber): OrderCourierContactResponseDTO
-    {
-        $this->authenticateRequests();
-
-        return $this->send(new GetOrderCourierContactRequest($trackingNumber))->dto();
     }
 
     public function getOrderCourierPosition(string $trackingNumber): OrderCourierPositionResponseDTO
@@ -134,16 +123,6 @@ class UklonConnector extends Connector
         $this->assertIsStagingEnv();
         $this->authenticateRequests();
         $this->send(new SimulateFailedDeliveryRequest($trackingNumber));
-    }
-
-    /**
-     * @throws UklonException
-     */
-    public function getWebhooks(): WebhooksListResponseDTO
-    {
-        $this->authenticateRequests();
-
-        return $this->send(new GetWebhooksListRequest())->dto();
     }
 
     /**

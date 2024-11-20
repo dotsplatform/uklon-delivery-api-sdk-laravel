@@ -15,6 +15,10 @@ class OrderCourierPositionResponseDTO extends UklonResponseDTO
 
     protected float $longitude;
 
+    protected ?int $bearing;
+
+    protected ?int $next_point_eta;
+
     public function getLatitude(): float
     {
         return $this->latitude;
@@ -23,5 +27,15 @@ class OrderCourierPositionResponseDTO extends UklonResponseDTO
     public function getLongitude(): float
     {
         return $this->longitude;
+    }
+
+    public function getBearing(): ?int
+    {
+        return $this->bearing;
+    }
+
+    public function getNextPointEta(): ?int
+    {
+        return $this->next_point_eta;
     }
 }

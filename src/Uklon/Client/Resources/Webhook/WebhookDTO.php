@@ -11,31 +11,17 @@ use Dots\Data\DTO;
 
 class WebhookDTO extends DTO
 {
-    protected int $webhookId;
+    protected string $url;
 
-    protected string $callbackUrl;
+    protected string $key;
 
-    protected ?RetryConfig $retryConfig;
-
-    public static function fromArray(array $data): static
+    public function getUrl(): string
     {
-        $data['retryConfig'] = isset($data['retryConfig']) ? RetryConfig::fromArray($data['retryConfig']) : null;
-
-        return parent::fromArray($data);
+        return $this->url;
     }
 
-    public function getWebhookId(): int
+    public function getKey(): string
     {
-        return $this->webhookId;
-    }
-
-    public function getCallbackUrl(): string
-    {
-        return $this->callbackUrl;
-    }
-
-    public function getRetryConfig(): ?RetryConfig
-    {
-        return $this->retryConfig;
+        return $this->key;
     }
 }

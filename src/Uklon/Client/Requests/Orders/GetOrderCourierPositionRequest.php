@@ -20,7 +20,7 @@ use Saloon\Http\Response;
  */
 class GetOrderCourierPositionRequest extends BaseUklonRequest
 {
-    private const ENDPOINT_TEMPLATE = '/v2/laas/parcels/%s/courier-position';
+    private const string ENDPOINT_TEMPLATE = '/api/v1/orders/%s/driver/location';
 
     public function __construct(
         protected readonly string $trackingNumber,
