@@ -11,15 +11,12 @@ use Dots\Uklon\Client\DTO\UklonAuthDTO;
 use Dots\Uklon\Client\UklonConnector;
 use Dots\Uklon\Commands\FareCreateUklonCommand;
 use Dots\Uklon\Commands\OrderCancelUklonCommand;
-use Dots\Uklon\Commands\OrderCourierContactUklonCommand;
 use Dots\Uklon\Commands\OrderCourierPositionUklonCommand;
 use Dots\Uklon\Commands\OrderCreateUklonCommand;
 use Dots\Uklon\Commands\OrderInfoUklonCommand;
 use Dots\Uklon\Commands\OrderSimulateFailDeliveryUklonCommand;
 use Dots\Uklon\Commands\OrderSimulateSuccessfulDeliveryUklonCommand;
-use Dots\Uklon\Commands\OrderValidateUklonCommand;
 use Dots\Uklon\Commands\WebhooksDeleteUklonCommand;
-use Dots\Uklon\Commands\WebhooksListUklonCommand;
 use Dots\Uklon\Commands\WebhooksRegisterUklonCommand;
 use Dots\Uklon\Commands\WebhooksSimulateUklonCommand;
 use Illuminate\Support\ServiceProvider;
@@ -59,15 +56,12 @@ class UklonDeliveryServiceProvider extends ServiceProvider
         $this->commands([
             FareCreateUklonCommand::class,
             OrderCancelUklonCommand::class,
-            OrderCourierContactUklonCommand::class,
             OrderCourierPositionUklonCommand::class,
             OrderCreateUklonCommand::class,
             OrderInfoUklonCommand::class,
             OrderSimulateSuccessfulDeliveryUklonCommand::class,
             OrderSimulateFailDeliveryUklonCommand::class,
-            OrderValidateUklonCommand::class,
             WebhooksDeleteUklonCommand::class,
-            WebhooksListUklonCommand::class,
             WebhooksRegisterUklonCommand::class,
             WebhooksSimulateUklonCommand::class,
         ]);
