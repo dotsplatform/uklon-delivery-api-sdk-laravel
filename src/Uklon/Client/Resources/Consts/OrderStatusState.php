@@ -9,27 +9,25 @@ namespace Dots\Uklon\Client\Resources\Consts;
 
 enum OrderStatusState: string
 {
-    case CREATED = 'CREATED';
-    case REJECTED = 'REJECTED';
-    case SCHEDULED = 'SCHEDULED';
-    case ACTIVATED = 'ACTIVATED';
-    case ACCEPTED = 'ACCEPTED';
-    case WAITING_FOR_PICKUP = 'WAITING_FOR_PICKUP';
-    case PICKED = 'PICKED';
-    case WAITING_FOR_DELIVERY = 'WAITING_FOR_DELIVERY';
-    case DELIVERED = 'DELIVERED';
-    case CANCELLED = 'CANCELLED';
-    case NOT_DELIVERED_NOT_RETURNED = 'NOT_DELIVERED_NOT_RETURNED';
-    case RETURNED = 'RETURNED';
+    case PLACED = 'placed';
+    case WAITING_FOR_PRECESSING = 'waiting_for_processing';
+    case PROCESSING = 'processing';
+    case ACCEPTED = 'accepted';
+    case ARRIVED = 'arrived';
+    case RUNNING = 'running';
+    case RETURNING = 'returning';
+    case COMPLETED = 'completed';
+    case SUSPENDED = 'suspended';
+    case CANCELLED = 'cancelled';
 
     public function isCourierAssigned(): bool
     {
         return in_array($this, [
             self::ACCEPTED,
-            self::WAITING_FOR_PICKUP,
-            self::PICKED,
-            self::WAITING_FOR_DELIVERY,
-            self::DELIVERED,
+            self::ARRIVED,
+            self::RUNNING,
+            self::RETURNING,
+            self::COMPLETED,
         ], true);
     }
 }
