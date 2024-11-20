@@ -13,27 +13,22 @@ class UklonOAuthResponse extends UklonResponseDTO
 {
     protected string $accessToken;
 
-    protected int $expiresAt;
+    protected int $clientId;
 
-    protected string $refreshToken;
+    protected int $expiresIn;
 
-    protected ?string $twoFactorToken;
+    protected ?string $expires;
 
-    protected string $tokenType;
-
-    protected ?string $scope;
+    protected string $issued;
 
     public static function fromResponse(Response $response): static
     {
         $data = $response->json();
-        $data['expiresAt'] = time() + $data['expiresIn'];
+        $data['accessToken'] = $data['access_token'];
+        $data['clientId'] = $data['client_id'];
+        $data['expiresIn'] = $data['expires_in'];
 
         return static::fromArray($data);
-    }
-
-    public static function fromArray(array $data): static
-    {
-        return parent::fromArray($data);
     }
 
     public function getAccessToken(): string
@@ -41,33 +36,23 @@ class UklonOAuthResponse extends UklonResponseDTO
         return $this->accessToken;
     }
 
-    public function getExpiresAt(): int
+    public function getClientId(): int
     {
-        return $this->expiresAt;
+        return $this->clientId;
     }
 
-    public function getRefreshToken(): string
+    public function getExpiresIn(): int
     {
-        return $this->refreshToken;
+        return $this->expiresIn;
     }
 
-    public function getTwoFactorToken(): ?string
+    public function getExpires(): ?string
     {
-        return $this->twoFactorToken;
+        return $this->expires;
     }
 
-    public function getTokenType(): string
+    public function getIssued(): string
     {
-        return $this->tokenType;
-    }
-
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-
-    public function isExpired(): bool
-    {
-        return $this->expiresAt < time();
+        return $this->issued;
     }
 }
