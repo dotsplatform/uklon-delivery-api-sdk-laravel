@@ -16,11 +16,11 @@ class FareCreateUklonCommand extends BaseUklonCommand
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $order = $connector->createFare($this->getOrder());
+        $order = $connector->createFare($this->getFare());
         dd($order);
     }
 
-    private function getOrder(): CreateFareDTO
+    private function getFare(): CreateFareDTO
     {
         $data = [
             'city' => 1,
@@ -43,16 +43,6 @@ class FareCreateUklonCommand extends BaseUklonCommand
                     'age_verification' => false,
                 ],
             ],
-            //            'price' => [
-            //                'delivery' => [
-            //                    'value' => 0,
-            //                    'currencyCode' => 'UAH',
-            //                ],
-            //                'parcel' => [
-            //                    'value' => 0,
-            //                    'currencyCode' => 'UAH',
-            //                ],
-            //            ],
         ];
 
         return CreateFareDTO::fromArray($data);

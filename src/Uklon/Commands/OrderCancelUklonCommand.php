@@ -11,12 +11,12 @@ use Dots\Uklon\Client\Exceptions\UklonException;
 
 class OrderCancelUklonCommand extends BaseUklonCommand
 {
-    public $signature = 'uklon:orders:cancel {trackingNumber}';
+    public $signature = 'uklon:orders:cancel {orderId}';
 
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $trackingNumber = $this->assertStringValue($this->argument('trackingNumber'));
+        $trackingNumber = $this->assertStringValue($this->argument('orderId'));
         try {
             $connector->cancelOrder($trackingNumber);
         } catch (UklonException $e) {

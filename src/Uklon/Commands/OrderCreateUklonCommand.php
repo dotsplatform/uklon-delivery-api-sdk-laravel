@@ -7,7 +7,10 @@
 
 namespace Dots\Uklon\Commands;
 
+use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
+use Dots\Uklon\Client\Resources\Consts\Products;
+use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 
 class OrderCreateUklonCommand extends BaseUklonCommand
 {
@@ -16,44 +19,56 @@ class OrderCreateUklonCommand extends BaseUklonCommand
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $order = $connector->createOrder($this->getOrder());
+        $fare = $connector->createFare($this->getFare());
+        $order = $connector->createOrder($this->getOrder($fare));
         dd($order);
     }
 
-    private function getOrder(): CreateOrderDTO
+    private function getOrder(FareResponseDTO $fare): CreateOrderDTO
     {
         $data = [
-            'address' => [
-                'cityName' => 'Kyiv',
-                'country' => 'Ukraine',
-                'rawAddress' => 'Tarasa Shevchenko Blvd, 16, Kyiv, Ukraine, 02000',
-            ],
-            'contact' => [
+            'fare_id' => $fare->getId(),
+            'product' => Products::CAR,
+            'sender' => [
                 'name' => 'Yehor',
                 'phone' => '+380631837252',
             ],
-            'pickupDetails' => [
-                'contactPhone' => '+380631837252',
-                'pickupOrderCode' => '123456',
-                'pickupPhone' => '+380631837251',
-                'address' => [
-                    'cityName' => 'Kyiv',
-                    'country' => 'Ukraine',
-                    'rawAddress' => 'Tarasa Shevchenko Blvd, 18, Kyiv, Ukraine, 02000',
+            'receivers' => [
+                [
+                    'name' => 'Viktor',
+                    'phone' => '+380631839999',
                 ],
             ],
-            //            'price' => [
-            //                'delivery' => [
-            //                    'value' => 0,
-            //                    'currencyCode' => 'UAH',
-            //                ],
-            //                'parcel' => [
-            //                    'value' => 0,
-            //                    'currencyCode' => 'UAH',
-            //                ],
-            //            ],
         ];
 
         return CreateOrderDTO::fromArray($data);
+    }
+
+    private function getFare(): CreateFareDTO
+    {
+        $data = [
+            'city' => 1,
+            'pickup_point' => [
+                'latitude' => 51.5044742,
+                'longitude' => 31.2894746,
+            ],
+            'dropoff_points' => [
+                [
+                    'latitude' => 51.4920781,
+                    'longitude' => 31.1732924,
+                ],
+            ],
+            'products' => [
+                'car' => [
+                    'door' => false,
+                    'confirmation_code' => false,
+                    'surprise' => false,
+                    'buyout' => false,
+                    'age_verification' => false,
+                ],
+            ],
+        ];
+
+        return CreateFareDTO::fromArray($data);
     }
 }

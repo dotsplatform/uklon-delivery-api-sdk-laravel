@@ -8,65 +8,60 @@
 namespace Dots\Uklon\Client\Requests\Orders\DTO;
 
 use Dots\Data\DTO;
-use Dots\Uklon\Client\Resources\Address;
-use Dots\Uklon\Client\Resources\Contact;
-use Dots\Uklon\Client\Resources\Order\OrderPrice;
-use Dots\Uklon\Client\Resources\Order\PackageDetails;
-use Dots\Uklon\Client\Resources\Order\PickupDetails;
+use Dots\Uklon\Client\Resources\Person;
+use Dots\Uklon\Client\Resources\PlaceReceivers;
 
 class CreateOrderDTO extends DTO
 {
-    // Order delivery address
-    protected Address $address;
+    protected string $fare_id;
 
-    // Contact of the recipient
-    protected Contact $contact;
+    protected ?string $product;
 
-    protected ?PackageDetails $packageDetails;
+    protected Person $sender;
 
-    protected ?string $packageId;
+    protected PlaceReceivers $receivers;
 
-    protected PickupDetails $pickupDetails;
+    protected ?string $comment;
 
-    protected ?OrderPrice $price;
+    protected ?float $agreed_cost;
 
     public function toRequestData(bool $stageEnv): array
     {
         $data = $this->toArray();
         if ($stageEnv) {
-            $data['price'] = null;
+            $data['agreed_cost'] = 0.1;
         }
 
         return $data;
     }
 
-    public function getAddress(): Address
+    public function getFareId(): string
     {
-        return $this->address;
+        return $this->fare_id;
     }
 
-    public function getContact(): Contact
+    public function getProduct(): ?string
     {
-        return $this->contact;
+        return $this->product;
     }
 
-    public function getPackageDetails(): ?PackageDetails
+    public function getSender(): Person
     {
-        return $this->packageDetails;
+        return $this->sender;
     }
 
-    public function getPackageId(): ?string
+    public function getReceivers(): PlaceReceivers
     {
-        return $this->packageId;
+        return $this->receivers;
     }
 
-    public function getPickupDetails(): PickupDetails
+    public function getComment(): ?string
     {
-        return $this->pickupDetails;
+        return $this->comment;
     }
 
-    public function getPrice(): ?OrderPrice
+    public function getAgreedCost(): ?float
     {
-        return $this->price;
+        return $this->agreed_cost;
     }
 }

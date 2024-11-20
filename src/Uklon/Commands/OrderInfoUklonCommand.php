@@ -9,12 +9,12 @@ namespace Dots\Uklon\Commands;
 
 class OrderInfoUklonCommand extends BaseUklonCommand
 {
-    public $signature = 'uklon:orders:info {trackingNumber}';
+    public $signature = 'uklon:orders:info {orderId}';
 
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
-        $trackingNumber = $this->assertStringValue($this->argument('trackingNumber'));
+        $trackingNumber = $this->assertStringValue($this->argument('orderId'));
         $order = $connector->getOrder($trackingNumber);
         dd($order);
     }
