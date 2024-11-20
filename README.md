@@ -10,5 +10,5 @@ This a laravel package for Uklon Delivery API - https://deliverygateway.uklon.co
 
 ## Installation
 
-> composer require dotsplatform/uklon-delivery-api-sdk-larave
+> composer require dotsplatform/uklon-delivery-api-sdk-laravel
 
