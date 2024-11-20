@@ -12,7 +12,7 @@ use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
 class FareResponseDTO extends UklonResponseDTO
 {
-    protected string $uuid;
+    protected string $id;
 
     protected string $currency;
 
@@ -27,9 +27,9 @@ class FareResponseDTO extends UklonResponseDTO
         return parent::fromArray($data);
     }
 
-    public function getUuid(): string
+    public function getId(): string
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function getCurrency(): string

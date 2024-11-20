@@ -17,8 +17,12 @@ class EstimatedProducts extends DTO
 
     public static function fromArray(array $data): static
     {
-        $data['car'] = EstimatedProduct::fromArray($data['car']);
-        $data['courier'] = EstimatedProduct::fromArray($data['courier']);
+        if (isset($data['car'])) {
+            $data['car'] = EstimatedProduct::fromArray($data['car']);
+        }
+        if (isset($data['courier'])) {
+            $data['courier'] = EstimatedProduct::fromArray($data['courier']);
+        }
 
         return parent::fromArray($data);
     }

@@ -26,6 +26,7 @@ use Dots\Uklon\Client\Requests\Webhooks\GetWebhooksListRequest;
 use Dots\Uklon\Client\Requests\Webhooks\RegisterWebhookRequest;
 use Dots\Uklon\Client\Requests\Webhooks\Simulate\SimulateWebhookRequest;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
+use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierContactResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
@@ -62,7 +63,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function createFare(CreateFareDTO $dto): OrderResponseDTO
+    public function createFare(CreateFareDTO $dto): FareResponseDTO
     {
         $this->authenticateRequests();
 

@@ -23,7 +23,6 @@ use Dots\Uklon\Commands\WebhooksListUklonCommand;
 use Dots\Uklon\Commands\WebhooksRegisterUklonCommand;
 use Dots\Uklon\Commands\WebhooksSimulateUklonCommand;
 use Illuminate\Support\ServiceProvider;
-use Ramsey\Uuid\Uuid;
 
 class UklonDeliveryServiceProvider extends ServiceProvider
 {
@@ -39,7 +38,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
         $this->app->bind(UklonConnector::class, function () {
             return new UklonConnector(
                 UklonAuthDTO::fromArray([
-                    'appUid' => Uuid::uuid7(),
+                    'appUid' => config('uklon.auth.appUid'),
                     'clientId' => config('uklon.auth.clientId'),
                     'clientSecret' => config('uklon.auth.clientSecret'),
                 ]),
