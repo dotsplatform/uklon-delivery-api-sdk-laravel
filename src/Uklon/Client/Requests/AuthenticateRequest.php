@@ -13,9 +13,7 @@ use Saloon\Http\Response;
 
 class AuthenticateRequest extends PostUklonRequest
 {
-    private const ENDPOINT = '/oauth/token';
-
-    private const GRANT_TYPE_CREDENTIALS = 'client_credentials';
+    private const string ENDPOINT = '/api/v1/auth';
 
     public function __construct(
         private readonly UklonAuthDTO $dto
@@ -30,9 +28,9 @@ class AuthenticateRequest extends PostUklonRequest
     public function defaultBody(): array
     {
         return [
-            'clientId' => $this->dto->getClientId(),
-            'clientSecret' => $this->dto->getClientSecret(),
-            'grantType' => self::GRANT_TYPE_CREDENTIALS,
+            'app_uid' => $this->dto->getAppUid(),
+            'client_id' => $this->dto->getClientId(),
+            'client_secret' => $this->dto->getClientSecret(),
         ];
     }
 

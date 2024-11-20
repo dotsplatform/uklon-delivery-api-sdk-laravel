@@ -11,16 +11,27 @@ use Dots\Data\DTO;
 
 class UklonAuthDTO extends DTO
 {
+    protected string $appUid;
+
     protected string $clientId;
 
     protected string $clientSecret;
 
-    public static function make(string $clientId, string $clientSecret): self
-    {
+    public static function make(
+        string $appUid,
+        string $clientId,
+        string $clientSecret,
+    ): self {
         return self::fromArray([
+            'appUid' => $appUid,
             'clientId' => $clientId,
             'clientSecret' => $clientSecret,
         ]);
+    }
+
+    public function getAppUid(): string
+    {
+        return $this->appUid;
     }
 
     public function getClientId(): string

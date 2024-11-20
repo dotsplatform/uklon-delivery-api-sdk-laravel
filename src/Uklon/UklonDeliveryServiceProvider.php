@@ -9,6 +9,7 @@ namespace Dots\Uklon;
 
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
 use Dots\Uklon\Client\UklonConnector;
+use Dots\Uklon\Commands\FareCreateUklonCommand;
 use Dots\Uklon\Commands\OrderCancelUklonCommand;
 use Dots\Uklon\Commands\OrderCourierContactUklonCommand;
 use Dots\Uklon\Commands\OrderCourierPositionUklonCommand;
@@ -22,6 +23,7 @@ use Dots\Uklon\Commands\WebhooksListUklonCommand;
 use Dots\Uklon\Commands\WebhooksRegisterUklonCommand;
 use Dots\Uklon\Commands\WebhooksSimulateUklonCommand;
 use Illuminate\Support\ServiceProvider;
+use Ramsey\Uuid\Uuid;
 
 class UklonDeliveryServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
         $this->app->bind(UklonConnector::class, function () {
             return new UklonConnector(
                 UklonAuthDTO::fromArray([
+                    'appUid' => Uuid::uuid7(),
                     'clientId' => config('uklon.auth.clientId'),
                     'clientSecret' => config('uklon.auth.clientSecret'),
                 ]),
@@ -55,6 +58,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
     protected function registerArtisanCommands(): void
     {
         $this->commands([
+            FareCreateUklonCommand::class,
             OrderCancelUklonCommand::class,
             OrderCourierContactUklonCommand::class,
             OrderCourierPositionUklonCommand::class,
