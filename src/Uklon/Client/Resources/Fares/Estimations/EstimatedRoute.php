@@ -8,6 +8,7 @@
 namespace Dots\Uklon\Client\Resources\Fares\Estimations;
 
 use Dots\Data\DTO;
+use Dots\Uklon\Client\Resources\Distance;
 
 class EstimatedRoute extends DTO
 {

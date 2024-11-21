@@ -1,19 +1,21 @@
 <?php
 /**
- * Description of Coordinates.php
+ * Description of PointDTO.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Client\Resources;
 
 use Dots\Data\DTO;
 
-class Coordinates extends DTO
+class Point extends DTO
 {
     protected float $latitude;
 
     protected float $longitude;
+
+    protected ?string $address;
 
     public function getLatitude(): float
     {
@@ -23,5 +25,10 @@ class Coordinates extends DTO
     public function getLongitude(): float
     {
         return $this->longitude;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
     }
 }

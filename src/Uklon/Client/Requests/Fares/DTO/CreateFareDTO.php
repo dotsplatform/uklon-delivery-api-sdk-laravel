@@ -9,15 +9,15 @@ namespace Dots\Uklon\Client\Requests\Fares\DTO;
 
 use Dots\Data\DTO;
 use Dots\Uklon\Client\Resources\Fares\Conditions;
-use Dots\Uklon\Client\Resources\Fares\PointDetails;
 use Dots\Uklon\Client\Resources\Fares\PointsDetails;
 use Dots\Uklon\Client\Resources\Fares\Products\Products;
+use Dots\Uklon\Client\Resources\Point;
 
 class CreateFareDTO extends DTO
 {
     protected int $city;
 
-    protected PointDetails $pickup_point;
+    protected Point $pickup_point;
 
     protected PointsDetails $dropoff_points;
 
@@ -39,7 +39,7 @@ class CreateFareDTO extends DTO
         return $this->city;
     }
 
-    public function getPickupPoint(): PointDetails
+    public function getPickupPoint(): Point
     {
         return $this->pickup_point;
     }

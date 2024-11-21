@@ -5,7 +5,7 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Resources\Fares\Estimations;
+namespace Dots\Uklon\Client\Resources;
 
 use Dots\Data\DTO;
 
