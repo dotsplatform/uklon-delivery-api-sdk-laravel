@@ -22,7 +22,6 @@ use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForDriverRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForOrderRequest;
-use Dots\Uklon\Client\Requests\Webhooks\Simulate\SimulateWebhookRequest;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
@@ -106,21 +105,21 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function createWebhookForOrder(CreateWebhookDTO $dto): WebhookResponseDTO
+    public function createWebhookForOrder(CreateWebhookDTO $dto): void
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateWebhookForOrderRequest($dto))->dto();
+        $this->send(new CreateWebhookForOrderRequest($dto));
     }
 
     /**
      * @throws UklonException
      */
-    public function createWebhookForDriver(CreateWebhookDTO $dto): WebhookResponseDTO
+    public function createWebhookForDriver(CreateWebhookDTO $dto): void
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateWebhookForDriverRequest($dto))->dto();
+        $this->send(new CreateWebhookForDriverRequest($dto));
     }
 
     /**
@@ -129,7 +128,7 @@ class UklonConnector extends Connector
     public function deleteWebhookForOrder(): void
     {
         $this->authenticateRequests();
-        $this->send(new DeleteWebhookForOrderRequest())->dto();
+        $this->send(new DeleteWebhookForOrderRequest());
     }
 
     /**
@@ -138,7 +137,7 @@ class UklonConnector extends Connector
     public function deleteWebhookForDriver(): void
     {
         $this->authenticateRequests();
-        $this->send(new DeleteWebhookForDriverRequest())->dto();
+        $this->send(new DeleteWebhookForDriverRequest());
     }
 
     private function authenticateRequests(): void

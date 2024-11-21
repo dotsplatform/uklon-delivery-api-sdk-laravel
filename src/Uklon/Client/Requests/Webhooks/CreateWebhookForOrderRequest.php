@@ -29,11 +29,6 @@ class CreateWebhookForOrderRequest extends PostUklonRequest
     ) {
     }
 
-    public function createDtoFromResponse(Response $response): WebhookResponseDTO
-    {
-        return WebhookResponseDTO::fromResponse($response);
-    }
-
     public function defaultBody(): array
     {
         return $this->dto->toArray();
