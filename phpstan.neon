@@ -14,7 +14,7 @@ parameters:
         - src/Uklon
 
     ignoreErrors:
-        - '#Method .*\\GlovoConnector::.* should return .*\\Responses\\.* but returns mixed.#'
-        - '#Method .*\\GlovoConnector::.* should return array but returns mixed.#'
+        - '#Method .*\\UklonConnector::.* should return .*\\Responses\\.* but returns mixed.#'
+        - '#Method .*\\UklonConnector::.* should return array but returns mixed.#'
 #        - '#Method .* should return Illuminate\\Database\\Eloquent\\Collection.* but returns Illuminate\\Database\\Eloquent\\Collection.#'
 

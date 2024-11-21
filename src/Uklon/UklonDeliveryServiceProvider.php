@@ -2,7 +2,7 @@
 /**
  * Description of UklonLaasServiceProvider.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon;

@@ -2,7 +2,7 @@
 /**
  * Description of GetOrderCourierInformationRequest.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Client\Requests\Cities;
@@ -13,11 +13,9 @@ use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Saloon\Http\Response;
 
 /**
- * @url https://logistics-docs.glovoapp.com/laas-partners/index.html#operation/getCourierPosition
+ * Get cities list
  *
- * Get courier position
- *
- * This endpoint retrieves the live location of the courier assigned to a particular order.
+ * Get the available cities for delivery
  */
 class GetCitiesRequest extends BaseUklonRequest
 {

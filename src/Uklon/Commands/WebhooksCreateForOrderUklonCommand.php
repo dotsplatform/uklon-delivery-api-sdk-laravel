@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of WebhooksListGlovoCommand.php
+ * Description of WebhooksCreateForOrderUklonCommand.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Commands;
@@ -28,7 +28,7 @@ class WebhooksCreateForOrderUklonCommand extends BaseUklonCommand
     private function getRegisterWebhookDTO(): CreateWebhookDTO
     {
         return CreateWebhookDTO::fromArray([
-            'url' => 'https://api-release.dotsdev.live/api/v1/integrations/glovo/webhooks',
+            'url' => 'https://api-release.dotsdev.live/api/v1/integrations/uklon/webhooks',
             'key' => Uuid::uuid7()->toString(),
         ]);
     }

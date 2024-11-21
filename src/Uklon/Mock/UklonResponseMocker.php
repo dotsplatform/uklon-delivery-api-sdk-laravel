@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of GlovoResponseMocker.php
+ * Description of UklonResponseMocker.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
  */
@@ -12,8 +12,6 @@ use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierContactRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
-use Dots\Uklon\Client\Requests\Orders\ValidateOrderRequest;
-use Dots\Uklon\Client\Resources\Consts\ValidationResult;
 use Dots\Uklon\Mock\Data\UklonOAuthResponseGenerator;
 use Dots\Uklon\Mock\Data\OrderCourierResponseGenerator;
 use Dots\Uklon\Mock\Data\OrderInfoSuccessResponseGenerator;

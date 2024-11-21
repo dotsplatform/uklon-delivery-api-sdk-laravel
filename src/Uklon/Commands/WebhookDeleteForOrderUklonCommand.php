@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of WebhooksListGlovoCommand.php
+ * Description of WebhookDeleteForOrderUklonCommand.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Commands;

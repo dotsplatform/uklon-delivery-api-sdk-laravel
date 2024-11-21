@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of GlovoAuthDTOTest.php
+ * Description of UklonAuthDTOTest.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Tests\Uklon\Client\DTO;
@@ -15,41 +15,41 @@ class UklonAuthDTOTest extends TestCase
     /**
      * @dataProvider provideUklonAuthDTOData
      */
-    public function testMakeGlovoAuthDTO(string $clientId, string $clientSecret): void
+    public function testMakeUklonAuthDTO(string $clientId, string $clientSecret): void
     {
-        $glovoAuthDTO = UklonAuthDTO::make($clientId, $clientSecret);
+        $uklonAuthDTO = UklonAuthDTO::make($clientId, $clientSecret);
 
-        $this->assertEquals($clientId, $glovoAuthDTO->getClientId());
-        $this->assertEquals($clientSecret, $glovoAuthDTO->getClientSecret());
+        $this->assertEquals($clientId, $uklonAuthDTO->getClientId());
+        $this->assertEquals($clientSecret, $uklonAuthDTO->getClientSecret());
     }
 
     /**
      * @dataProvider provideUklonAuthDTOData
      */
-    public function testFromArrayGlovoAuthDTO(string $clientId, string $clientSecret): void
+    public function testFromArrayUklonAuthDTO(string $clientId, string $clientSecret): void
     {
-        $glovoAuthDTO = UklonAuthDTO::fromArray([
+        $uklonAuthDTO = UklonAuthDTO::fromArray([
             'clientId' => $clientId,
             'clientSecret' => $clientSecret,
         ]);
 
-        $this->assertEquals($clientId, $glovoAuthDTO->getClientId());
-        $this->assertEquals($clientSecret, $glovoAuthDTO->getClientSecret());
+        $this->assertEquals($clientId, $uklonAuthDTO->getClientId());
+        $this->assertEquals($clientSecret, $uklonAuthDTO->getClientSecret());
     }
 
     /**
      * @dataProvider provideUklonAuthDTOData
      */
-    public function testFromArrayToArrayGlovoAuthDTO(string $clientId, string $clientSecret): void
+    public function testFromArrayToArrayUklonAuthDTO(string $clientId, string $clientSecret): void
     {
         $dto = UklonAuthDTO::fromArray([
             'clientId' => $clientId,
             'clientSecret' => $clientSecret,
         ]);
-        $glovoAuthDTO = UklonAuthDTO::fromArray($dto->toArray());
+        $uklonAuthDTO = UklonAuthDTO::fromArray($dto->toArray());
 
-        $this->assertEquals($clientId, $glovoAuthDTO->getClientId());
-        $this->assertEquals($clientSecret, $glovoAuthDTO->getClientSecret());
+        $this->assertEquals($clientId, $uklonAuthDTO->getClientId());
+        $this->assertEquals($clientSecret, $uklonAuthDTO->getClientSecret());
     }
 
     public static function provideUklonAuthDTOData(): array

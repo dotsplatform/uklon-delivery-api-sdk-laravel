@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of GlovoLaasServiceProviderTest.php
+ * Description of UklonDeliveryServiceProviderTest.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Tests\Uklon;
