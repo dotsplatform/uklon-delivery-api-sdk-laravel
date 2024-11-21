@@ -7,7 +7,6 @@
 
 namespace Dots\Uklon\Commands;
 
-use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Saloon\Exceptions\SaloonException;
 
 class WebhookDeleteForOrderUklonCommand extends BaseUklonCommand

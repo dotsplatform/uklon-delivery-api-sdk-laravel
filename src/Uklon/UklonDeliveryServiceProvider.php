@@ -10,6 +10,7 @@ namespace Dots\Uklon;
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
 use Dots\Uklon\Client\UklonConnector;
 use Dots\Uklon\Commands\FareCreateUklonCommand;
+use Dots\Uklon\Commands\GetCitiesUklonCommand;
 use Dots\Uklon\Commands\OrderCancelUklonCommand;
 use Dots\Uklon\Commands\OrderCourierPositionUklonCommand;
 use Dots\Uklon\Commands\OrderCreateUklonCommand;
@@ -55,6 +56,7 @@ class UklonDeliveryServiceProvider extends ServiceProvider
         $this->commands([
             FareCreateUklonCommand::class,
             OrderCancelUklonCommand::class,
+            GetCitiesUklonCommand::class,
             OrderCourierPositionUklonCommand::class,
             OrderCreateUklonCommand::class,
             OrderInfoUklonCommand::class,

@@ -10,6 +10,7 @@ namespace Dots\Uklon\Client;
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
 use Dots\Uklon\Client\Exceptions\UklonException;
 use Dots\Uklon\Client\Requests\AuthenticateRequest;
+use Dots\Uklon\Client\Requests\Cities\GetCitiesRequest;
 use Dots\Uklon\Client\Requests\Fares\CreateFareRequest;
 use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
 use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
@@ -22,6 +23,7 @@ use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForDriverRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForOrderRequest;
+use Dots\Uklon\Client\Responses\Cities\CitiesResponseDTO;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
@@ -138,6 +140,16 @@ class UklonConnector extends Connector
     {
         $this->authenticateRequests();
         $this->send(new DeleteWebhookForDriverRequest());
+    }
+
+    /**
+     * @throws UklonException
+     */
+    public function getCities(): CitiesResponseDTO
+    {
+        $this->authenticateRequests();
+
+        return $this->send(new GetCitiesRequest())->dto();
     }
 
     private function authenticateRequests(): void
