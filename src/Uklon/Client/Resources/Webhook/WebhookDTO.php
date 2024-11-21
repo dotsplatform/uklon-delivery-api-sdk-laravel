@@ -11,17 +11,24 @@ use Dots\Data\DTO;
 
 class WebhookDTO extends DTO
 {
-    protected string $url;
+    protected string $subcode;
 
-    protected string $key;
+    protected string $message;
 
-    public function getUrl(): string
+    protected array $descriptions;
+
+    public function getSubcode(): string
     {
-        return $this->url;
+        return $this->subcode;
     }
 
-    public function getKey(): string
+    public function getMessage(): string
     {
-        return $this->key;
+        return $this->message;
+    }
+
+    public function getDescriptions(): array
+    {
+        return $this->descriptions;
     }
 }

@@ -8,6 +8,7 @@
 namespace Dots\Uklon\Commands;
 
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
+use Ramsey\Uuid\Uuid;
 use Saloon\Exceptions\SaloonException;
 
 class WebhooksCreateForDriverUklonCommand extends BaseUklonCommand
@@ -28,7 +29,7 @@ class WebhooksCreateForDriverUklonCommand extends BaseUklonCommand
     {
         return CreateWebhookDTO::fromArray([
             'url' => 'https://api-release.dotsdev.live/api/v1/integrations/uklon/webhooks',
-            'key' => 'secret',
+            'key' => Uuid::uuid7()->toString(),
         ]);
     }
 }

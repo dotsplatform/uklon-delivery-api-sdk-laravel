@@ -8,6 +8,7 @@
 namespace Dots\Uklon\Commands;
 
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
+use Ramsey\Uuid\Uuid;
 use Saloon\Exceptions\SaloonException;
 
 class WebhooksCreateForOrderUklonCommand extends BaseUklonCommand
@@ -18,7 +19,7 @@ class WebhooksCreateForOrderUklonCommand extends BaseUklonCommand
     {
         $connector = $this->getUklonConnector();
         try {
-            $connector->createWebhookForDriver($this->getRegisterWebhookDTO());
+            $connector->createWebhookForOrder($this->getRegisterWebhookDTO());
         } catch (SaloonException $e) {
             $this->error($e->getMessage());
         }
@@ -28,7 +29,7 @@ class WebhooksCreateForOrderUklonCommand extends BaseUklonCommand
     {
         return CreateWebhookDTO::fromArray([
             'url' => 'https://api-release.dotsdev.live/api/v1/integrations/glovo/webhooks',
-            'key' => 'secret',
+            'key' => Uuid::uuid7()->toString(),
         ]);
     }
 }
