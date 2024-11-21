@@ -2,7 +2,7 @@
 /**
  * Description of CreateOrderDTOTest.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Tests\Uklon\Client\Requests\Orders\DTO;

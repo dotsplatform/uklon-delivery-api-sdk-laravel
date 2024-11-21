@@ -2,7 +2,7 @@
 /**
  * Description of UklonResponseMocker.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
+ * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
 namespace Dots\Uklon\Mock;

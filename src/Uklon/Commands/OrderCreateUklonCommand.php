@@ -10,6 +10,7 @@ namespace Dots\Uklon\Commands;
 use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
 use Dots\Uklon\Client\Resources\Consts\Products;
+use Dots\Uklon\Client\Resources\PlaceReceivers;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 
 class OrderCreateUklonCommand extends BaseUklonCommand
@@ -28,17 +29,17 @@ class OrderCreateUklonCommand extends BaseUklonCommand
     {
         $data = [
             'fare_id' => $fare->getId(),
-            'product' => Products::CAR,
+            'product' => Products::CAR->value,
             'sender' => [
                 'name' => 'Yehor',
                 'phone' => '+380631837252',
             ],
-            'receivers' => [
+            'receivers' => PlaceReceivers::fromArray([
                 [
                     'name' => 'Viktor',
                     'phone' => '+380631839999',
                 ],
-            ],
+            ]),
         ];
 
         return CreateOrderDTO::fromArray($data);
