@@ -7,35 +7,26 @@
 
 namespace Dots\Uklon\Client\Responses;
 
-use Dots\Uklon\Client\Resources\Consts\ErrorCodes;
-
 class ErrorResponseDTO extends UklonResponseDTO
 {
-    protected ErrorCodes $code;
+    protected string $subcode;
 
-    protected ?string $description;
+    protected string $message;
 
-    protected array $errors = [];
+    protected array $descriptions = [];
 
-    public static function fromArray(array $data): static
+    public function getSubcode(): string
     {
-        $data['code'] = ErrorCodes::fromResponse($data['code'] ?? '');
-
-        return parent::fromArray($data);
+        return $this->subcode;
     }
 
-    public function getCode(): ErrorCodes
+    public function getMessage(): string
     {
-        return $this->code;
+        return $this->message;
     }
 
-    public function getDescription(): ?string
+    public function getDescriptions(): array
     {
-        return $this->description;
-    }
-
-    public function getErrors(): array
-    {
-        return $this->errors;
+        return $this->descriptions;
     }
 }

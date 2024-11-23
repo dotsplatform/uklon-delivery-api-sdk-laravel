@@ -88,6 +88,9 @@ class UklonConnector extends Connector
         return $this->send(new GetOrderRequest($orderId))->dto();
     }
 
+    /**
+     * @throws UklonException
+     */
     public function getOrderCourierPosition(string $orderId): OrderCourierPositionResponseDTO
     {
         $this->authenticateRequests();

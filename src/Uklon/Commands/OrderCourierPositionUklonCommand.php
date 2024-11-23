@@ -7,6 +7,8 @@
 
 namespace Dots\Uklon\Commands;
 
+use Dots\Uklon\Client\Exceptions\UklonException;
+
 class OrderCourierPositionUklonCommand extends BaseUklonCommand
 {
     public $signature = 'uklon:orders:courier:position {orderId}';
@@ -15,7 +17,11 @@ class OrderCourierPositionUklonCommand extends BaseUklonCommand
     {
         $connector = $this->getUklonConnector();
         $orderId = $this->assertStringValue($this->argument('orderId'));
-        $order = $connector->getOrderCourierPosition($orderId);
+        try {
+            $order = $connector->getOrderCourierPosition($orderId);
+        } catch (UklonException $e) {
+            $this->error($e->getMessage());
+        }
         dd($order);
     }
 }
