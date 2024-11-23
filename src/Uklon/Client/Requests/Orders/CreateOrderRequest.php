@@ -9,7 +9,7 @@ namespace Dots\Uklon\Client\Requests\Orders;
 
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
 use Dots\Uklon\Client\Requests\PostUklonRequest;
-use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderCreateResponseDTO;
 use Saloon\Http\Response;
 
 class CreateOrderRequest extends PostUklonRequest
@@ -29,5 +29,10 @@ class CreateOrderRequest extends PostUklonRequest
     public function resolveEndpoint(): string
     {
         return self::ENDPOINT;
+    }
+
+    public function createDtoFromResponse(Response $response): OrderCreateResponseDTO
+    {
+        return OrderCreateResponseDTO::fromResponse($response);
     }
 }

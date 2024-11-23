@@ -20,7 +20,7 @@ use Dots\Uklon\Client\Resources\Person;
 use Dots\Uklon\Client\Resources\PlaceReceivers;
 use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
-class OrderResponseDTO extends UklonResponseDTO
+class OrderInfoResponseDTO extends UklonResponseDTO
 {
     protected string $id;
 

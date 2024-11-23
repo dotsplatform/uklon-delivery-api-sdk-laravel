@@ -27,7 +27,8 @@ use Dots\Uklon\Client\Responses\Cities\CitiesResponseDTO;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
-use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderCreateResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrderInfoResponseDTO;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use RuntimeException;
 use Saloon\Http\Connector;
@@ -70,17 +71,17 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function createOrder(CreateOrderDTO $dto): string
+    public function createOrder(CreateOrderDTO $dto): OrderCreateResponseDTO
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateOrderRequest($dto))['id'];
+        return $this->send(new CreateOrderRequest($dto))->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function getOrder(string $orderId): OrderResponseDTO
+    public function getOrder(string $orderId): OrderInfoResponseDTO
     {
         $this->authenticateRequests();
 
