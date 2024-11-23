@@ -18,22 +18,16 @@ class CreateOrderRequest extends PostUklonRequest
 
     public function __construct(
         protected readonly CreateOrderDTO $dto,
-        private readonly bool $stageEnv = true,
     ) {
     }
 
     protected function defaultBody(): array
     {
-        return $this->dto->toRequestData($this->stageEnv);
+        return $this->dto->toArray();
     }
 
     public function resolveEndpoint(): string
     {
         return self::ENDPOINT;
-    }
-
-    public function createDtoFromResponse(Response $response): OrderResponseDTO
-    {
-        return OrderResponseDTO::fromResponse($response);
     }
 }

@@ -29,7 +29,6 @@ use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderResponseDTO;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
-use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use RuntimeException;
 use Saloon\Http\Connector;
 use Saloon\Http\Response;
@@ -71,11 +70,11 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function createOrder(CreateOrderDTO $dto): OrderResponseDTO
+    public function createOrder(CreateOrderDTO $dto): string
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateOrderRequest($dto, $this->stageEnv))->dto();
+        return $this->send(new CreateOrderRequest($dto))['id'];
     }
 
     /**

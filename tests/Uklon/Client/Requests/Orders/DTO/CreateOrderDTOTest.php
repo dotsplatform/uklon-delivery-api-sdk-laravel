@@ -23,7 +23,7 @@ class CreateOrderDTOTest extends TestCase
     {
         $data = $this->generateData();
         $dto = CreateOrderDTO::fromArray($data);
-        $requestData = $dto->toRequestData(false);
+        $requestData = $dto->toArray();
         $this->assertEquals($data, $requestData);
     }
 
@@ -31,7 +31,7 @@ class CreateOrderDTOTest extends TestCase
     {
         $data = $this->generateData();
         $dto = CreateOrderDTO::fromArray($data);
-        $requestData = $dto->toRequestData(true);
+        $requestData = $dto->toArray();
         $this->assertNull($requestData['price']);
     }
 

@@ -21,8 +21,8 @@ class OrderCreateUklonCommand extends BaseUklonCommand
     {
         $connector = $this->getUklonConnector();
         $fare = $connector->createFare($this->getFare());
-        $order = $connector->createOrder($this->getOrder($fare));
-        dd($order);
+        $orderId = $connector->createOrder($this->getOrder($fare));
+        dd($orderId);
     }
 
     private function getOrder(FareResponseDTO $fare): CreateOrderDTO

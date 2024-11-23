@@ -25,16 +25,6 @@ class CreateOrderDTO extends DTO
 
     protected ?float $agreed_cost;
 
-    public function toRequestData(bool $stageEnv): array
-    {
-        $data = $this->toArray();
-        if ($stageEnv) {
-            $data['agreed_cost'] = 0.1;
-        }
-
-        return $data;
-    }
-
     public function getFareId(): string
     {
         return $this->fare_id;
