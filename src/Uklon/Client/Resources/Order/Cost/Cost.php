@@ -24,9 +24,9 @@ class Cost extends DTO
 
     protected ?float $return;
 
-    protected Buyout $buyout;
+    protected ?Buyout $buyout;
 
-    protected Idle $idle;
+    protected ?Idle $idle;
 
     public function getCurrency(): string
     {

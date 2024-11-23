@@ -34,11 +34,11 @@ class OrderInfoResponseDTO extends UklonResponseDTO
 
     protected PlaceReceivers $receivers;
 
-    protected ReturnReceiver $return_receiver;
+    protected ?ReturnReceiver $return_receiver;
 
     protected Creator $creator;
 
-    protected Driver $driver;
+    protected ?Driver $driver;
 
     protected Route $route;
 
@@ -55,6 +55,15 @@ class OrderInfoResponseDTO extends UklonResponseDTO
     protected array $extra_services = [];
 
     protected Idle $idle;
+
+    public static function fromArray(array $data): static
+    {
+        if (isset($data['receivers'])) {
+            $data['receivers'] = PlaceReceivers::fromArray($data['receivers']);
+        }
+
+        return parent::fromArray($data);
+    }
 
     public function getId(): string
     {

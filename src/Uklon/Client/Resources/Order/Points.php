@@ -17,7 +17,16 @@ class Points extends DTO
 
     protected DropoffPoints $dropoffs;
 
-    protected Point $return;
+    protected ?Point $return;
+
+    public static function fromArray(array $data): static
+    {
+        if (isset($data['dropoffs'])) {
+            $data['dropoffs'] = DropoffPoints::fromArray($data['dropoffs']);
+        }
+
+        return parent::fromArray($data);
+    }
 
     public function getPickup(): Point
     {

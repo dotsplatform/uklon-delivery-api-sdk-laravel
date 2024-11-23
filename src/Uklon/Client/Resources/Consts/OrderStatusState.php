@@ -18,7 +18,7 @@ enum OrderStatusState: string
     case RETURNING = 'returning';
     case COMPLETED = 'completed';
     case SUSPENDED = 'suspended';
-    case CANCELLED = 'cancelled';
+    case CANCELED = 'canceled';
 
     public function isCourierAssigned(): bool
     {
