@@ -20,7 +20,7 @@ class OrderCourierPositionUklonCommand extends BaseUklonCommand
         try {
             $order = $connector->getOrderCourierPosition($orderId);
         } catch (UklonException $e) {
-            $this->error($e->getMessage());
+            dd($e);
         }
         dd($order);
     }

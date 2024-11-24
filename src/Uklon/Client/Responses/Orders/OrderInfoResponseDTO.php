@@ -65,6 +65,11 @@ class OrderInfoResponseDTO extends UklonResponseDTO
         return parent::fromArray($data);
     }
 
+    public function canHaveCourierDetails(): bool
+    {
+        return $this->getStatus()->isCourierAssigned();
+    }
+
     public function getId(): string
     {
         return $this->id;
