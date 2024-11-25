@@ -17,9 +17,10 @@ class WebhooksGetForDriverUklonCommand extends BaseUklonCommand
     {
         $connector = $this->getUklonConnector();
         try {
-            $connector->getWebhookForDriver();
+            $webhook = $connector->getWebhookForDriver();
         } catch (UklonException $e) {
             $this->error($e->getErrorResponseDTO()->getMessage());
         }
+        dd($webhook);
     }
 }

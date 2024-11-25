@@ -8,6 +8,8 @@
 namespace Dots\Uklon\Client\Requests\Webhooks;
 
 use Dots\Uklon\Client\Requests\BaseUklonRequest;
+use Dots\Uklon\Client\Requests\Webhooks\DTO\WebhookResponseDTO;
+use Saloon\Http\Response;
 
 class
 GetWebhookForDriverRequest extends BaseUklonRequest
@@ -17,5 +19,10 @@ GetWebhookForDriverRequest extends BaseUklonRequest
     public function resolveEndpoint(): string
     {
         return self::ENDPOINT_TEMPLATE;
+    }
+
+    public function createDtoFromResponse(Response $response): WebhookResponseDTO
+    {
+        return WebhookResponseDTO::fromResponse($response);
     }
 }

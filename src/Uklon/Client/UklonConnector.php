@@ -24,6 +24,7 @@ use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForDriverRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForOrderRequest;
+use Dots\Uklon\Client\Requests\Webhooks\DTO\WebhookResponseDTO;
 use Dots\Uklon\Client\Requests\Webhooks\GetWebhookForDriverRequest;
 use Dots\Uklon\Client\Requests\Webhooks\GetWebhookForOrderRequest;
 use Dots\Uklon\Client\Responses\Cities\CitiesResponseDTO;
@@ -133,21 +134,21 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getWebhookForOrder(): void
+    public function getWebhookForOrder(): WebhookResponseDTO
     {
         $this->authenticateRequests();
 
-        $this->send(new GetWebhookForOrderRequest());
+        return $this->send(new GetWebhookForOrderRequest())->dto();
     }
 
     /**
      * @throws UklonException
      */
-    public function getWebhookForDriver(): void
+    public function getWebhookForDriver(): WebhookResponseDTO
     {
         $this->authenticateRequests();
 
-        $this->send(new GetWebhookForDriverRequest());
+        return $this->send(new GetWebhookForDriverRequest())->dto();
     }
 
     /**
