@@ -110,7 +110,7 @@ class OrderInfoResponseDTO extends UklonResponseDTO
         return $this->creator;
     }
 
-    public function getDriver(): Driver
+    public function getDriver(): ?Driver
     {
         return $this->driver;
     }

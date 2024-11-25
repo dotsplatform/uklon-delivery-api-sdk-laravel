@@ -7,13 +7,13 @@
 
 namespace Dots\Uklon\Client\Responses\Webhooks;
 
-use Dots\Uklon\Client\Resources\Webhook\WebhookDTO;
+use Dots\Uklon\Client\Resources\Webhook\Order\OrderUpdatesWebhookDTO;
 use Dots\Uklon\Client\Responses\UklonResponseDTO;
 use Saloon\Http\Response;
 
 class WebhookResponseDTO extends UklonResponseDTO
 {
-    protected WebhookDTO $webhook;
+    protected OrderUpdatesWebhookDTO $webhook;
 
     public static function fromResponse(Response $response): static
     {
@@ -26,12 +26,12 @@ class WebhookResponseDTO extends UklonResponseDTO
 
     public static function fromArray(array $data): static
     {
-        $data['webhook'] = WebhookDTO::fromArray($data['webhook']);
+        $data['webhook'] = OrderUpdatesWebhookDTO::fromArray($data['webhook']);
 
         return parent::fromArray($data);
     }
 
-    public function getWebhook(): WebhookDTO
+    public function getWebhook(): OrderUpdatesWebhookDTO
     {
         return $this->webhook;
     }
