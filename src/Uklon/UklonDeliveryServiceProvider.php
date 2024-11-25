@@ -19,6 +19,8 @@ use Dots\Uklon\Commands\WebhookDeleteForDriverUklonCommand;
 use Dots\Uklon\Commands\WebhookDeleteForOrderUklonCommand;
 use Dots\Uklon\Commands\WebhooksCreateForDriverUklonCommand;
 use Dots\Uklon\Commands\WebhooksCreateForOrderUklonCommand;
+use Dots\Uklon\Commands\WebhooksGetForDriverUklonCommand;
+use Dots\Uklon\Commands\WebhooksGetForOrderUklonCommand;
 use Illuminate\Support\ServiceProvider;
 
 class UklonDeliveryServiceProvider extends ServiceProvider
@@ -64,6 +66,8 @@ class UklonDeliveryServiceProvider extends ServiceProvider
             WebhookDeleteForDriverUklonCommand::class,
             WebhooksCreateForOrderUklonCommand::class,
             WebhooksCreateForDriverUklonCommand::class,
+            WebhooksGetForDriverUklonCommand::class,
+            WebhooksGetForOrderUklonCommand::class,
         ]);
     }
 }
