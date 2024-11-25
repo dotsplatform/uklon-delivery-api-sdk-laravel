@@ -20,6 +20,7 @@ class WebhooksGetForOrderUklonCommand extends BaseUklonCommand
             $webhook = $connector->getWebhookForOrder();
         } catch (UklonException $e) {
             $this->error($e->getErrorResponseDTO()->getMessage());
+            return;
         }
         dd($webhook);
     }
