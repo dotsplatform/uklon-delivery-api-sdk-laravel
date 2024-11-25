@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Client\Resources\Consts;
 
-enum Products: string
+enum Product: string
 {
     case CAR = 'car';
     case COURIER = 'courier';

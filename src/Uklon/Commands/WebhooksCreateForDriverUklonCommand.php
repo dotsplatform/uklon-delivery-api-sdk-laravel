@@ -13,22 +13,24 @@ use Saloon\Exceptions\SaloonException;
 
 class WebhooksCreateForDriverUklonCommand extends BaseUklonCommand
 {
-    public $signature = 'uklon:webhooks:create:driver';
+    public $signature = 'uklon:webhooks:create:driver {webhookUrl?}';
 
     public function handle(): void
     {
         $connector = $this->getUklonConnector();
+        $webhookUrl = $this->argument('webhookUrl');
         try {
-            $connector->createWebhookForDriver($this->getRegisterWebhookDTO());
+            $connector->createWebhookForDriver($this->getRegisterWebhookDTO($webhookUrl));
         } catch (SaloonException $e) {
             $this->error($e->getMessage());
         }
     }
 
-    private function getRegisterWebhookDTO(): CreateWebhookDTO
-    {
+    private function getRegisterWebhookDTO(
+        ?string $webhookUrl = null,
+    ): CreateWebhookDTO  {
         return CreateWebhookDTO::fromArray([
-            'url' => 'https://api-release.dotsdev.live/api/v1/integrations/uklon/webhooks',
+            'url' => $webhookUrl ?? config('uklon.webhooks.driver.url'),
             'key' => Uuid::uuid7()->toString(),
         ]);
     }

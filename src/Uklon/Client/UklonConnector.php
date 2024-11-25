@@ -15,6 +15,7 @@ use Dots\Uklon\Client\Requests\Fares\CreateFareRequest;
 use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
 use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
+use Dots\Uklon\Client\Requests\Orders\DTO\CancelOrderDTO;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierPositionRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
@@ -23,6 +24,8 @@ use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForDriverRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DeleteWebhookForOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForOrderRequest;
+use Dots\Uklon\Client\Requests\Webhooks\GetWebhookForDriverRequest;
+use Dots\Uklon\Client\Requests\Webhooks\GetWebhookForOrderRequest;
 use Dots\Uklon\Client\Responses\Cities\CitiesResponseDTO;
 use Dots\Uklon\Client\Responses\ErrorResponseDTO;
 use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
@@ -101,10 +104,10 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function cancelOrder(string $orderId): void
+    public function cancelOrder(string $orderId, CancelOrderDTO $dto): void
     {
         $this->authenticateRequests();
-        $this->send(new CancelOrderRequest($orderId));
+        $this->send(new CancelOrderRequest($orderId, $dto));
     }
 
     /**
@@ -130,10 +133,30 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
+    public function getWebhookForOrder(): void
+    {
+        $this->authenticateRequests();
+
+        $this->send(new CreateWebhookForOrderRequest());
+    }
+
+    /**
+     * @throws UklonException
+     */
+    public function getWebhookForDriver(): void
+    {
+        $this->authenticateRequests();
+
+        $this->send(new GetWebhookForDriverRequest());
+    }
+
+    /**
+     * @throws UklonException
+     */
     public function deleteWebhookForOrder(): void
     {
         $this->authenticateRequests();
-        $this->send(new DeleteWebhookForOrderRequest());
+        $this->send(new GetWebhookForOrderRequest());
     }
 
     /**

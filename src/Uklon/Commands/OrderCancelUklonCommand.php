@@ -8,6 +8,8 @@
 namespace Dots\Uklon\Commands;
 
 use Dots\Uklon\Client\Exceptions\UklonException;
+use Dots\Uklon\Client\Requests\Orders\DTO\CancelOrderDTO;
+use Dots\Uklon\Client\Resources\Consts\CancelReason;
 
 class OrderCancelUklonCommand extends BaseUklonCommand
 {
@@ -18,9 +20,18 @@ class OrderCancelUklonCommand extends BaseUklonCommand
         $connector = $this->getUklonConnector();
         $orderId = $this->assertStringValue($this->argument('orderId'));
         try {
-            $connector->cancelOrder($orderId);
+            $connector->cancelOrder($orderId, $this->getCancelOrderDTO());
         } catch (UklonException $e) {
             $this->error($e->getMessage());
         }
+    }
+
+    private function getCancelOrderDTO(): CancelOrderDTO
+    {
+        $data = [
+            'reason' => CancelReason::DRIVER_LOW_RATING,
+        ];
+
+        return CancelOrderDTO::fromArray($data);
     }
 }

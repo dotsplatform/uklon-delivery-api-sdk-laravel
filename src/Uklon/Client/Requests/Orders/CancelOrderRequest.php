@@ -7,6 +7,7 @@
 
 namespace Dots\Uklon\Client\Requests\Orders;
 
+use Dots\Uklon\Client\Requests\Orders\DTO\CancelOrderDTO;
 use Dots\Uklon\Client\Requests\PutUklonRequest;
 
 class CancelOrderRequest extends PutUklonRequest
@@ -15,7 +16,13 @@ class CancelOrderRequest extends PutUklonRequest
 
     public function __construct(
         protected readonly string $orderId,
+        protected readonly CancelOrderDTO $dto,
     ) {
+    }
+
+    protected function defaultBody(): array
+    {
+        return $this->dto->toArray();
     }
 
     public function resolveEndpoint(): string
