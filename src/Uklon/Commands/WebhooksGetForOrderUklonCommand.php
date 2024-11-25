@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Commands;
 
-use Saloon\Exceptions\SaloonException;
+use Dots\Uklon\Client\Exceptions\UklonException;
 
 class WebhooksGetForOrderUklonCommand extends BaseUklonCommand
 {
@@ -18,8 +18,8 @@ class WebhooksGetForOrderUklonCommand extends BaseUklonCommand
         $connector = $this->getUklonConnector();
         try {
             $connector->getWebhookForOrder();
-        } catch (SaloonException $e) {
-            $this->error($e->getMessage());
+        } catch (UklonException $e) {
+            $this->error($e->getErrorResponseDTO()->getMessage());
         }
     }
 }

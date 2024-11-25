@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Commands;
 
-use Saloon\Exceptions\SaloonException;
+use Dots\Uklon\Client\Exceptions\UklonException;
 
 class WebhooksGetForDriverUklonCommand extends BaseUklonCommand
 {
@@ -18,8 +18,8 @@ class WebhooksGetForDriverUklonCommand extends BaseUklonCommand
         $connector = $this->getUklonConnector();
         try {
             $connector->getWebhookForDriver();
-        } catch (SaloonException $e) {
-            $this->error($e->getMessage());
+        } catch (UklonException $e) {
+            $this->error($e->getErrorResponseDTO()->getMessage());
         }
     }
 }

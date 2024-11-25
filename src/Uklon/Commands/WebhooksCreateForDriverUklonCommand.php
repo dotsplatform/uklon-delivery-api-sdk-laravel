@@ -7,9 +7,9 @@
 
 namespace Dots\Uklon\Commands;
 
+use Dots\Uklon\Client\Exceptions\UklonException;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
 use Ramsey\Uuid\Uuid;
-use Saloon\Exceptions\SaloonException;
 
 class WebhooksCreateForDriverUklonCommand extends BaseUklonCommand
 {
@@ -21,8 +21,8 @@ class WebhooksCreateForDriverUklonCommand extends BaseUklonCommand
         $webhookUrl = $this->argument('webhookUrl');
         try {
             $connector->createWebhookForDriver($this->getRegisterWebhookDTO($webhookUrl));
-        } catch (SaloonException $e) {
-            $this->error($e->getMessage());
+        } catch (UklonException $e) {
+            $this->error($e->getErrorResponseDTO()->getMessage());
         }
     }
 

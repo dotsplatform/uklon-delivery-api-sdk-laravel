@@ -7,7 +7,7 @@
 
 namespace Dots\Uklon\Commands;
 
-use Saloon\Exceptions\SaloonException;
+use Dots\Uklon\Client\Exceptions\UklonException;
 
 class WebhookDeleteForDriverUklonCommand extends BaseUklonCommand
 {
@@ -18,8 +18,8 @@ class WebhookDeleteForDriverUklonCommand extends BaseUklonCommand
         $connector = $this->getUklonConnector();
         try {
             $connector->deleteWebhookForDriver();
-        } catch (SaloonException $e) {
-            $this->error($e->getMessage());
+        } catch (UklonException $e) {
+            $this->error($e->getErrorResponseDTO()->getMessage());
         }
     }
 }

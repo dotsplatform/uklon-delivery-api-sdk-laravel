@@ -137,7 +137,7 @@ class UklonConnector extends Connector
     {
         $this->authenticateRequests();
 
-        $this->send(new CreateWebhookForOrderRequest());
+        $this->send(new GetWebhookForOrderRequest());
     }
 
     /**
@@ -156,7 +156,7 @@ class UklonConnector extends Connector
     public function deleteWebhookForOrder(): void
     {
         $this->authenticateRequests();
-        $this->send(new GetWebhookForOrderRequest());
+        $this->send(new DeleteWebhookForOrderRequest());
     }
 
     /**
