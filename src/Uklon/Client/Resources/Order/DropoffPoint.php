@@ -21,6 +21,15 @@ class DropoffPoint extends DTO
 
     protected int $id;
 
+    public function isSameAddress(string $address): bool
+    {
+        if ($this->address === null) {
+            return false;
+        }
+
+        return $this->address === $address;
+    }
+
     public function getLatitude(): float
     {
         return $this->latitude;
