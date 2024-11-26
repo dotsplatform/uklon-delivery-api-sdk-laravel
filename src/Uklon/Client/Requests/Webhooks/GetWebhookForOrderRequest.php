@@ -8,7 +8,7 @@
 namespace Dots\Uklon\Client\Requests\Webhooks;
 
 use Dots\Uklon\Client\Requests\BaseUklonRequest;
-use Dots\Uklon\Client\Requests\Webhooks\DTO\WebhookResponseDTO;
+use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use Saloon\Http\Response;
 
 class GetWebhookForOrderRequest extends BaseUklonRequest

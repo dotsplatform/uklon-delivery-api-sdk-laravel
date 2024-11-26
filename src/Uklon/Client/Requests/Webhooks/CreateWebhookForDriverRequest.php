@@ -9,8 +9,6 @@ namespace Dots\Uklon\Client\Requests\Webhooks;
 
 use Dots\Uklon\Client\Requests\PostUklonRequest;
 use Dots\Uklon\Client\Requests\Webhooks\DTO\CreateWebhookDTO;
-use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
-use Saloon\Http\Response;
 
 class CreateWebhookForDriverRequest extends PostUklonRequest
 {

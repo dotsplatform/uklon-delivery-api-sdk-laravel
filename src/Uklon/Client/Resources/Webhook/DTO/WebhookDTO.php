@@ -5,11 +5,11 @@
  * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Client\Requests\Webhooks\DTO;
+namespace Dots\Uklon\Client\Resources\Webhook\DTO;
 
 use Dots\Uklon\Client\Responses\UklonResponseDTO;
 
-class WebhookResponseDTO extends UklonResponseDTO
+class WebhookDTO extends UklonResponseDTO
 {
     protected string $url;
 
