@@ -18,6 +18,11 @@ class Route extends DTO
 
     protected Points $points;
 
+    public function getFirstDropoffPoint(): DropoffPoint
+    {
+        return $this->getPoints()->getDropoffs()->first();
+    }
+
     public function getCity(): int
     {
         return $this->city;

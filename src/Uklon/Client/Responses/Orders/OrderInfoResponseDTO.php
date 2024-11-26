@@ -12,6 +12,7 @@ use Dots\Uklon\Client\Resources\Order\Cancellation;
 use Dots\Uklon\Client\Resources\Order\Cost\Cost;
 use Dots\Uklon\Client\Resources\Order\Creator;
 use Dots\Uklon\Client\Resources\Order\Driver;
+use Dots\Uklon\Client\Resources\Order\DropoffPoint;
 use Dots\Uklon\Client\Resources\Order\Idle\Idle;
 use Dots\Uklon\Client\Resources\Order\ReturnReceiver;
 use Dots\Uklon\Client\Resources\Order\Route;
@@ -54,7 +55,7 @@ class OrderInfoResponseDTO extends UklonResponseDTO
 
     protected array $extra_services = [];
 
-    protected Idle $idle;
+    protected ?Idle $idle;
 
     public static function fromArray(array $data): static
     {
@@ -63,6 +64,11 @@ class OrderInfoResponseDTO extends UklonResponseDTO
         }
 
         return parent::fromArray($data);
+    }
+
+    public function getRouteFirstDropoffPoint(): DropoffPoint
+    {
+        return $this->getRoute()->getFirstDropoffPoint();
     }
 
     public function canHaveCourierDetails(): bool
