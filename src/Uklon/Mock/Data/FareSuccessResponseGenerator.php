@@ -13,14 +13,13 @@ use Dots\Uklon\Client\Resources\Fares\Estimations\EstimatedProduct;
 use Dots\Uklon\Client\Resources\Fares\Estimations\EstimatedProducts;
 use Dots\Uklon\Client\Resources\Fares\Estimations\EstimatedRoute;
 use Dots\Uklon\Client\Resources\Fares\Estimations\ProductEstimation;
-use Illuminate\Support\Str;
 
 class FareSuccessResponseGenerator
 {
     public static function generate(array $data = []): array
     {
         return array_merge([
-            'id' => Str::uuid7()->toString(),
+            'id' => '01936d6b-2526-72e4-9b57-654f6545c818',
             'currency' => 'UAH',
             'estimated_products' => EstimatedProducts::fromArray([
                 'car' => EstimatedProduct::fromArray([

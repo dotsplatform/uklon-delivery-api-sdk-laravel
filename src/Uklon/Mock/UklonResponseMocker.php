@@ -8,9 +8,11 @@
 namespace Dots\Uklon\Mock;
 
 use Dots\Uklon\Client\Requests\AuthenticateRequest;
+use Dots\Uklon\Client\Requests\Fares\CreateFareRequest;
 use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
+use Dots\Uklon\Mock\Data\FareSuccessResponseGenerator;
 use Dots\Uklon\Mock\Data\UklonOAuthResponseGenerator;
 use Dots\Uklon\Mock\Data\OrderInfoSuccessResponseGenerator;
 use Saloon\Http\Faking\MockClient;
@@ -20,10 +22,12 @@ class UklonResponseMocker
 {
     public static function mockSuccessCreateOrder(array $data = []): array
     {
+        $fareData = FareSuccessResponseGenerator::generate();
         $orderData = OrderInfoSuccessResponseGenerator::generate($data);
         $authData = UklonOAuthResponseGenerator::generate();
         MockClient::global([
             AuthenticateRequest::class => MockResponse::make($authData),
+            CreateFareRequest::class => MockResponse::make($fareData),
             CreateOrderRequest::class => MockResponse::make($orderData),
         ]);
 
@@ -51,7 +55,7 @@ class UklonResponseMocker
         ]);
     }
 
-    public static function mockGeAccessToken(array $data = []): array
+    public static function mockGetAccessToken(array $data = []): array
     {
         $responseData = UklonOAuthResponseGenerator::generate($data);
         MockClient::global([

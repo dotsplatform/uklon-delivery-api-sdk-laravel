@@ -18,14 +18,13 @@ use Dots\Uklon\Client\Resources\Order\DropoffPoints;
 use Dots\Uklon\Client\Resources\Order\Points;
 use Dots\Uklon\Client\Resources\Order\Route;
 use Dots\Uklon\Client\Resources\Point;
-use Illuminate\Support\Str;
 
 class OrderInfoSuccessResponseGenerator
 {
     public static function generate(array $data = []): array
     {
         return array_merge([
-            'id' => Str::uuid7()->toString(),
+            'id' => '01936d6b-2533-7244-9f2b-4c63b64163a4',
             'status' => OrderStatusState::PROCESSING,
             'product' => Product::CAR->value,
             'times' => [
@@ -42,7 +41,7 @@ class OrderInfoSuccessResponseGenerator
                 ],
             ],
             'creator' => Creator::fromArray([
-                'id' => Str::uuid7()->toString(),
+                'id' => '01936d6b-2533-7244-9f2b-4c63b64163bb',
                 'name' => 'Nick',
                 'phone' => '+380666666667',
             ])->toArray(),
@@ -68,14 +67,14 @@ class OrderInfoSuccessResponseGenerator
                         ])->toArray(),
                     ])->toArray(),
                 ])->toArray(),
-            ]),
+            ])->toArray(),
             'cost' => Cost::fromArray([
                 'currency' => 'UAH',
                 'total' => 100,
                 'minimum' => 100,
                 'maximum' => 100,
                 'route' => 100,
-            ]),
+            ])->toArray(),
             'suspended' => false,
             'deferred' => false,
         ], $data);
