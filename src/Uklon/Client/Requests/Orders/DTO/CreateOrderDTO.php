@@ -25,6 +25,15 @@ class CreateOrderDTO extends DTO
 
     protected ?float $agreed_cost;
 
+    public static function fromArray(array $data): static
+    {
+        if (isset($data['receivers'])) {
+            $data['receivers'] = PlaceReceivers::fromArray($data['receivers']);
+        }
+
+        return parent::fromArray($data);
+    }
+
     public function getFareId(): string
     {
         return $this->fare_id;

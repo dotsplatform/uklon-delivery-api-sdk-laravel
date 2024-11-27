@@ -39,7 +39,7 @@ class OrderCreateUklonCommand extends BaseUklonCommand
                     'name' => 'Viktor',
                     'phone' => '+380631839999',
                 ],
-            ]),
+            ])->toArray(),
         ];
 
         return CreateOrderDTO::fromArray($data);
@@ -52,11 +52,13 @@ class OrderCreateUklonCommand extends BaseUklonCommand
             'pickup_point' => [
                 'latitude' => 51.5044742,
                 'longitude' => 31.2894746,
+                'address' => 'Some address',
             ],
             'dropoff_points' => [
                 [
                     'latitude' => 51.4920781,
                     'longitude' => 31.1732924,
+                    'address' => 'Some address 2',
                 ],
             ],
             'products' => [

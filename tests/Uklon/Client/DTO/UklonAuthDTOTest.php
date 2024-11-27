@@ -8,27 +8,31 @@
 namespace Tests\Uklon\Client\DTO;
 
 use Dots\Uklon\Client\DTO\UklonAuthDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class UklonAuthDTOTest extends TestCase
 {
-    /**
-     * @dataProvider provideUklonAuthDTOData
-     */
-    public function testMakeUklonAuthDTO(string $clientId, string $clientSecret): void
-    {
-        $uklonAuthDTO = UklonAuthDTO::make($clientId, $clientSecret);
+    #[DataProvider('provideUklonAuthDTOData')]
+    public function testMakeUklonAuthDTO(
+        string $appUid,
+        string $clientId,
+        string $clientSecret,
+    ): void {
+        $uklonAuthDTO = UklonAuthDTO::make($appUid, $clientId, $clientSecret);
 
         $this->assertEquals($clientId, $uklonAuthDTO->getClientId());
         $this->assertEquals($clientSecret, $uklonAuthDTO->getClientSecret());
     }
 
-    /**
-     * @dataProvider provideUklonAuthDTOData
-     */
-    public function testFromArrayUklonAuthDTO(string $clientId, string $clientSecret): void
-    {
+    #[DataProvider('provideUklonAuthDTOData')]
+    public function testFromArrayUklonAuthDTO(
+        string $appUid,
+        string $clientId,
+        string $clientSecret,
+    ): void {
         $uklonAuthDTO = UklonAuthDTO::fromArray([
+            'appUid' => $appUid,
             'clientId' => $clientId,
             'clientSecret' => $clientSecret,
         ]);
@@ -37,12 +41,14 @@ class UklonAuthDTOTest extends TestCase
         $this->assertEquals($clientSecret, $uklonAuthDTO->getClientSecret());
     }
 
-    /**
-     * @dataProvider provideUklonAuthDTOData
-     */
-    public function testFromArrayToArrayUklonAuthDTO(string $clientId, string $clientSecret): void
-    {
+    #[DataProvider('provideUklonAuthDTOData')]
+    public function testFromArrayToArrayUklonAuthDTO(
+        string $appUid,
+        string $clientId,
+        string $clientSecret,
+    ): void {
         $dto = UklonAuthDTO::fromArray([
+            'appUid' => $appUid,
             'clientId' => $clientId,
             'clientSecret' => $clientSecret,
         ]);
@@ -56,6 +62,7 @@ class UklonAuthDTOTest extends TestCase
     {
         return [
             'valid data' => [
+                'appUid' => 'testAppUid',
                 'clientId' => 'testClientId',
                 'clientSecret' => 'testClientSecret',
             ],

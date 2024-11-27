@@ -8,6 +8,9 @@
 namespace Tests\Uklon\Client\Requests\Orders\DTO;
 
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
+use Dots\Uklon\Client\Resources\Consts\Product;
+use Dots\Uklon\Client\Resources\PlaceReceivers;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class CreateOrderDTOTest extends TestCase
@@ -19,74 +22,24 @@ class CreateOrderDTOTest extends TestCase
         $this->assertEquals($data, $dto->toArray());
     }
 
-    public function testToRequestDataExpectsPriceIfStageEnvFalse(): void
-    {
-        $data = $this->generateData();
-        $dto = CreateOrderDTO::fromArray($data);
-        $requestData = $dto->toArray();
-        $this->assertEquals($data, $requestData);
-    }
-
-    public function testToRequestDataExpectsPriceIfStageEnvTrue(): void
-    {
-        $data = $this->generateData();
-        $dto = CreateOrderDTO::fromArray($data);
-        $requestData = $dto->toArray();
-        $this->assertNull($requestData['price']);
-    }
-
     private function generateData(array $data = []): array
     {
         return array_merge([
-            'address' => [
-                'cityName' => 'Kyiv',
-                'country' => 'Ukraine',
-                'rawAddress' => 'Tarasa Shevchenko Blvd, 16, Kyiv, Ukraine, 02000',
-                'postalCode' => null,
-                'details' => null,
-                'streetName' => null,
-                'streetNumber' => null,
-                'coordinates' => [
-                    'latitude' => 50.4508,
-                    'longitude' => 30.5233,
-                ],
-
-            ],
-            'contact' => [
+            'fare_id' => Str::uuid7()->toString(),
+            'product' => Product::CAR->value,
+            'sender' => [
                 'name' => 'Yehor',
                 'phone' => '+380631837252',
-                'email' => null,
+                'door' => null,
             ],
-            'pickupDetails' => [
-                'pickupOrderCode' => '123456',
-                'pickupPhone' => '+380631837251',
-                'pickupTime' => '2021-09-30T12:00:00+03:00',
-                'address' => [
-                    'cityName' => 'Kyiv',
-                    'country' => 'Ukraine',
-                    'rawAddress' => 'Tarasa Shevchenko Blvd, 18, Kyiv, Ukraine, 02000',
-                    'postalCode' => null,
-                    'details' => null,
-                    'streetName' => null,
-                    'streetNumber' => null,
-                    'coordinates' => [
-                        'latitude' => 50.4501,
-                        'longitude' => 30.5234,
-                    ],
+            'receivers' => PlaceReceivers::fromArray([
+                [
+                    'name' => 'Viktor',
+                    'phone' => '+380631839999',
                 ],
-            ],
-            'price' => [
-                'delivery' => [
-                    'value' => 0,
-                    'currencyCode' => 'UAH',
-                ],
-                'parcel' => [
-                    'value' => 0,
-                    'currencyCode' => 'UAH',
-                ],
-            ],
-            'packageDetails' => null,
-            'packageId' => null,
+            ])->toArray(),
+            'comment' => null,
+            'agreed_cost' => null,
         ], $data);
     }
 }

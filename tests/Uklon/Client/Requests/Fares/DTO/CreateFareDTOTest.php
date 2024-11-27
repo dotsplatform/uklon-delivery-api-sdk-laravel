@@ -1,28 +1,27 @@
 <?php
 /**
- * Description of OrderCreate.php
+ * Description of CreateOrderDTOTest.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
-namespace Dots\Uklon\Commands;
+namespace Tests\Uklon\Client\Requests\Fares\DTO;
 
 use Dots\Uklon\Client\Requests\Fares\DTO\CreateFareDTO;
+use Tests\TestCase;
 
-class FareCreateUklonCommand extends BaseUklonCommand
+class CreateFareDTOTest extends TestCase
 {
-    public $signature = 'uklon:fares:create';
-
-    public function handle(): void
+    public function testCreateExpectsOk(): void
     {
-        $connector = $this->getUklonConnector();
-        $order = $connector->createFare($this->getFare());
-        dd($order);
+        $data = $this->generateData();
+        $dto = CreateFareDTO::fromArray($data);
+        $this->assertEquals($data, $dto->toArray());
     }
 
-    private function getFare(): CreateFareDTO
+    private function generateData(array $data = []): array
     {
-        $data = [
+        return array_merge([
             'city' => 1,
             'pickup_point' => [
                 'latitude' => 51.5044742,
@@ -43,10 +42,13 @@ class FareCreateUklonCommand extends BaseUklonCommand
                     'surprise' => false,
                     'buyout' => false,
                     'age_verification' => false,
+                    'deferred' => null,
+                    'postpayment' => null,
                 ],
+                'courier' => null,
             ],
-        ];
-
-        return CreateFareDTO::fromArray($data);
+            'conditions' => null,
+            'strategy_id' => null,
+        ], $data);
     }
 }

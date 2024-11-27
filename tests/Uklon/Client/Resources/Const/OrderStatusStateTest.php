@@ -23,7 +23,7 @@ class OrderStatusStateTest extends TestCase
         $this->assertEquals('returning', OrderStatusState::RETURNING->value);
         $this->assertEquals('completed', OrderStatusState::COMPLETED->value);
         $this->assertEquals('suspended', OrderStatusState::SUSPENDED->value);
-        $this->assertEquals('cancelled', OrderStatusState::CANCELED->value);
+        $this->assertEquals('canceled', OrderStatusState::CANCELED->value);
     }
 
     public function testIsCourierAssigned(): void

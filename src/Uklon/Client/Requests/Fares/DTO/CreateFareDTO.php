@@ -27,6 +27,15 @@ class CreateFareDTO extends DTO
 
     protected ?string $strategy_id;
 
+    public static function fromArray(array $data): static
+    {
+        if (isset($data['dropoff_points'])) {
+            $data['dropoff_points'] = PointsDetails::fromArray($data['dropoff_points']);
+        }
+
+        return parent::fromArray($data);
+    }
+
     public function getCity(): int
     {
         return $this->city;
