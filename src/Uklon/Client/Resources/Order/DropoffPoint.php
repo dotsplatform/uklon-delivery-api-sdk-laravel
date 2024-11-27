@@ -8,6 +8,7 @@
 namespace Dots\Uklon\Client\Resources\Order;
 
 use Dots\Data\DTO;
+use Dots\Uklon\Client\Resources\Consts\DropoffStatus;
 
 class DropoffPoint extends DTO
 {
@@ -17,7 +18,7 @@ class DropoffPoint extends DTO
 
     protected ?string $address;
 
-    protected string $status;
+    protected DropoffStatus $status;
 
     protected int $id;
 
@@ -45,7 +46,7 @@ class DropoffPoint extends DTO
         return $this->address;
     }
 
-    public function getStatus(): string
+    public function getStatus(): DropoffStatus
     {
         return $this->status;
     }
