@@ -27,7 +27,12 @@ class EstimatedProduct extends DTO
         return parent::fromArray($data);
     }
 
-    public function getEstimation(): ProductEstimation
+    public function getDriveTimeSeconds(): ?int
+    {
+        return $this->getEstimation()?->getRoute()->getDriveTimeSeconds();
+    }
+
+    public function getEstimation(): ?ProductEstimation
     {
         return $this->estimation;
     }

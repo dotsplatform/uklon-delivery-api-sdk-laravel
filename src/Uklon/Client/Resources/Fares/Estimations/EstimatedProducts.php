@@ -27,6 +27,11 @@ class EstimatedProducts extends DTO
         return parent::fromArray($data);
     }
 
+    public function isEmpty(): bool
+    {
+        return !$this->car && !$this->courier;
+    }
+
     public function getCar(): ?EstimatedProduct
     {
         return $this->car;
