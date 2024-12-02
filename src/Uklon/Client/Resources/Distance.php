@@ -15,6 +15,11 @@ class Distance extends DTO
 
     protected int $suburbanMeters;
 
+    public function getTotalDistance(): int
+    {
+        return $this->cityMeters + $this->suburbanMeters;
+    }
+
     public function getCityMeters(): int
     {
         return $this->cityMeters;
