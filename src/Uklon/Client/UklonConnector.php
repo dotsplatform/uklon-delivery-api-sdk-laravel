@@ -17,6 +17,8 @@ use Dots\Uklon\Client\Requests\Orders\CancelOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\CreateOrderRequest;
 use Dots\Uklon\Client\Requests\Orders\DTO\CancelOrderDTO;
 use Dots\Uklon\Client\Requests\Orders\DTO\CreateOrderDTO;
+use Dots\Uklon\Client\Requests\Orders\GetActiveOrdersRequest;
+use Dots\Uklon\Client\Requests\Orders\GetArchivedOrdersRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderCourierPositionRequest;
 use Dots\Uklon\Client\Requests\Orders\GetOrderRequest;
 use Dots\Uklon\Client\Requests\Webhooks\CreateWebhookForDriverRequest;
@@ -32,6 +34,7 @@ use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCreateResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderInfoResponseDTO;
+use Dots\Uklon\Client\Responses\Orders\OrdersInfoResponse;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use RuntimeException;
@@ -90,6 +93,26 @@ class UklonConnector extends Connector
         $this->authenticateRequests();
 
         return $this->send(new GetOrderRequest($orderId))->dto();
+    }
+
+    /**
+     * @throws UklonException
+     */
+    public function getActiveOrders(string $orderId): OrdersInfoResponse
+    {
+        $this->authenticateRequests();
+
+        return $this->send(new GetActiveOrdersRequest())->dto();
+    }
+
+    /**
+     * @throws UklonException
+     */
+    public function getArchivedOrders(string $orderId): OrdersInfoResponse
+    {
+        $this->authenticateRequests();
+
+        return $this->send(new GetArchivedOrdersRequest())->dto();
     }
 
     /**
