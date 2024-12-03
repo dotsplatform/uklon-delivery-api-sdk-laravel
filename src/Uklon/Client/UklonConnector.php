@@ -98,7 +98,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getActiveOrders(string $orderId): OrdersInfoResponse
+    public function getActiveOrders(): OrdersInfoResponse
     {
         $this->authenticateRequests();
 
@@ -108,7 +108,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getArchivedOrders(string $orderId): OrdersInfoResponse
+    public function getArchivedOrders(): OrdersInfoResponse
     {
         $this->authenticateRequests();
 
