@@ -108,11 +108,11 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getArchivedOrders(): OrdersInfoResponse
+    public function getArchivedOrders(int $limit): OrdersInfoResponse
     {
         $this->authenticateRequests();
 
-        return $this->send(new GetArchivedOrdersRequest())->dto();
+        return $this->send(new GetArchivedOrdersRequest($limit))->dto();
     }
 
     /**
