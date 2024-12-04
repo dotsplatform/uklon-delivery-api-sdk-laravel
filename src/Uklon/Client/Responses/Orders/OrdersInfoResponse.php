@@ -22,9 +22,11 @@ class OrdersInfoResponse extends Collection
 
     public static function fromResponse(Response $response): static
     {
+        $items = $response->json()['items'] ?? [];
+
         return new static(array_map(
             fn(array $item) => OrderInfoResponseDTO::fromArray($item),
-            $response->json(),
+            $items,
         ));
     }
 }
