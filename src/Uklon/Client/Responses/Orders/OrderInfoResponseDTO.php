@@ -106,7 +106,7 @@ class OrderInfoResponseDTO extends UklonResponseDTO
         return $this->receivers;
     }
 
-    public function getReturnReceiver(): ReturnReceiver
+    public function getReturnReceiver(): ?ReturnReceiver
     {
         return $this->return_receiver;
     }
@@ -156,7 +156,7 @@ class OrderInfoResponseDTO extends UklonResponseDTO
         return $this->extra_services;
     }
 
-    public function getIdle(): Idle
+    public function getIdle(): ?Idle
     {
         return $this->idle;
     }
