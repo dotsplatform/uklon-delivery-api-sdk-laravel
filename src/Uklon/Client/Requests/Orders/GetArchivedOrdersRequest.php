@@ -8,7 +8,7 @@
 namespace Dots\Uklon\Client\Requests\Orders;
 
 use Dots\Uklon\Client\Requests\BaseUklonRequest;
-use Dots\Uklon\Client\Responses\Orders\OrdersInfoResponse;
+use Dots\Uklon\Client\Responses\Orders\OrdersInfoResponseDTO;
 use Saloon\Http\Response;
 
 class GetArchivedOrdersRequest extends BaseUklonRequest
@@ -27,9 +27,9 @@ class GetArchivedOrdersRequest extends BaseUklonRequest
         return sprintf('%s?%s', self::ENDPOINT_TEMPLATE, $query);
     }
 
-    public function createDtoFromResponse(Response $response): OrdersInfoResponse
+    public function createDtoFromResponse(Response $response): OrdersInfoResponseDTO
     {
-        return OrdersInfoResponse::fromResponse($response);
+        return OrdersInfoResponseDTO::fromResponse($response);
     }
 
     private function generateQuery(): string
