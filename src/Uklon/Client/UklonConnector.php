@@ -34,7 +34,7 @@ use Dots\Uklon\Client\Responses\Fares\FareResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCourierPositionResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderCreateResponseDTO;
 use Dots\Uklon\Client\Responses\Orders\OrderInfoResponseDTO;
-use Dots\Uklon\Client\Responses\Orders\OrdersInfoResponse;
+use Dots\Uklon\Client\Responses\Orders\OrdersInfoResponseDTO;
 use Dots\Uklon\Client\Responses\UklonOAuthResponse;
 use Dots\Uklon\Client\Responses\Webhooks\WebhookResponseDTO;
 use RuntimeException;
@@ -98,7 +98,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getActiveOrders(): OrdersInfoResponse
+    public function getActiveOrders(): OrdersInfoResponseDTO
     {
         $this->authenticateRequests();
 
@@ -108,7 +108,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getArchivedOrders(int $limit, ?string $cursor = null): OrdersInfoResponse
+    public function getArchivedOrders(int $limit, ?string $cursor = null): OrdersInfoResponseDTO
     {
         $this->authenticateRequests();
 
