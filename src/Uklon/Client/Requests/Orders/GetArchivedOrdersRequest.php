@@ -17,17 +17,31 @@ class GetArchivedOrdersRequest extends BaseUklonRequest
 
     public function __construct(
         protected readonly int $limit,
+        protected readonly ?string $cursor = null,
     ) {
     }
 
     public function resolveEndpoint(): string
     {
-        $query = http_build_query(['limit' => $this->limit]);
+        $query = $this->generateQuery();
         return sprintf('%s?%s', self::ENDPOINT_TEMPLATE, $query);
     }
 
     public function createDtoFromResponse(Response $response): OrdersInfoResponse
     {
         return OrdersInfoResponse::fromResponse($response);
+    }
+
+    private function generateQuery(): string
+    {
+        $queryParams = [
+            'limit' => $this->limit,
+        ];
+
+        if ($this->cursor) {
+            $queryParams['cursor'] = $this->cursor;
+        }
+
+        return http_build_query($queryParams);
     }
 }
