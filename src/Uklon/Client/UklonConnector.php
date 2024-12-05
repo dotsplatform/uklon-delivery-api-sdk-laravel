@@ -108,7 +108,7 @@ class UklonConnector extends Connector
     /**
      * @throws UklonException
      */
-    public function getArchivedOrders(int $limit, ?string $cursor): OrdersInfoResponse
+    public function getArchivedOrders(int $limit, ?string $cursor = null): OrdersInfoResponse
     {
         $this->authenticateRequests();
 
