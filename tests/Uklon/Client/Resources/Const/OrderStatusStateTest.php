@@ -39,4 +39,18 @@ class OrderStatusStateTest extends TestCase
         $this->assertFalse(OrderStatusState::SUSPENDED->isCourierAssigned());
         $this->assertFalse(OrderStatusState::CANCELED->isCourierAssigned());
     }
+
+    public function testIsCanceledStatus(): void
+    {
+        $this->assertFalse(OrderStatusState::PLACED->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::WAITING_FOR_PRECESSING->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::PROCESSING->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::ACCEPTED->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::ARRIVED->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::RUNNING->isCanceledStatus());
+        $this->assertFalse(OrderStatusState::RETURNING->isCanceledStatus());
+        $this->assertTrue(OrderStatusState::COMPLETED->isCanceledStatus());
+        $this->assertTrue(OrderStatusState::SUSPENDED->isCanceledStatus());
+        $this->assertTrue(OrderStatusState::CANCELED->isCanceledStatus());
+    }
 }

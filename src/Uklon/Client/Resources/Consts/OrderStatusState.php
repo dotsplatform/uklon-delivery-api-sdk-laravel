@@ -30,4 +30,13 @@ enum OrderStatusState: string
             self::COMPLETED,
         ], true);
     }
+
+    public function isCanceledStatus(): bool
+    {
+        return in_array($this, [
+            self::COMPLETED,
+            self::SUSPENDED,
+            self::CANCELED,
+        ], true);
+    }
 }
