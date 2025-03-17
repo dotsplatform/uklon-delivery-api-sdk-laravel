@@ -18,9 +18,7 @@ class OrdersInfoResponseDTO extends UklonResponseDTO
 
     public static function fromArray(array $data): static
     {
-        if (isset($data['items'])) {
-            $data['items'] = OrdersList::fromArray($data['items']);
-        }
+        $data['items'] = OrdersList::fromArray($data['items'] ?? []);
 
         return parent::fromArray($data);
     }
