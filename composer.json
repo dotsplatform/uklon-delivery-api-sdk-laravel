@@ -3,9 +3,9 @@
     "description": "This a laravel package for Uklon Delivery API - https://deliverygateway.uklon.com.ua/docs",
     "type": "library",
     "require": {
-        "php": "^8.3",
+        "php": "^8.5",
         "dotsplatform/utils": "^2.3",
-        "saloonphp/saloon": "^3.5",
+        "saloonphp/saloon": "^4.0",
         "illuminate/support": "*"
     },
     "require-dev": {
